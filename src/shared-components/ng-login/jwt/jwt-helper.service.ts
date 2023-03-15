@@ -1,0 +1,145 @@
+import { Inject, Injectable } from '@angular/core';
+import { JWT_OPTIONS } from './jwt-options.token';
+
+@Injectable()
+/**
+ * JWT Helper service. Util functions for JWT.
+ */
+export class JwtHelperService {
+  /**
+   * Token getter function
+   */
+  tokenGetter: () => string;
+
+  /**
+   * Constructor
+   * @param config Configuration options
+   */
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  constructor(@Inject(JWT_OPTIONS) config: any) {
+    this.tokenGetter = config.tokenGetter;
+  }
+
+  /**
+   * Base64 decoder for URLs
+   * @param str Base64 encoded URL string
+   * @return Base64 decoded URL string
+   */
+  public urlBase64Decode(str: string): string {
+    let output = str.replace(/-/g, '+').replace(/_/g, '/');
+    switch (output.length % 4) {
+      case 0: {
+        break;
+      }
+      case 2: {
+        output += '==';
+        break;
+      }
+      case 3: {
+        output += '=';
+        break;
+      }
+      default: {
+        throw 'Illegal base64url string!';
+      }
+    }
+
+    return this.b64DecodeUnicode(output);
+  }
+
+  /**
+   * Token decoder
+   *
+   * @param token Base64 encoded token
+   * @return Decoded token
+   */
+  public decodeToken(token: string = this.tokenGetter()): any {
+    const parts = token.split('.');
+
+    if (parts.length !== 3) {
+      throw new Error(
+        'The inspected token does not appear to be a JWT. Check to make sure it has ' +
+          'three parts and see https://jwt.io for more.'
+      );
+    }
+
+    const decoded = this.urlBase64Decode(parts[1]);
+    if (!decoded) {
+      throw new Error('Cannot decode the token.');
+    }
+
+    return JSON.parse(decoded);
+  }
+
+  /**
+   * Token expiration date getter
+   *
+   * @param token JWT token
+   * @return Token's expiration date
+   */
+  public getTokenExpirationDate(token: string = this.tokenGetter()): Date | null {
+    const decoded = this.decodeToken(token);
+
+    // eslint-disable-next-line no-prototype-builtins
+    if (!decoded.hasOwnProperty('exp')) {
+      return null;
+    }
+
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+
+    return date;
+  }
+
+  /**
+   * Base64 decoder
+   * @param str Base64 encoded string
+   * @return Base64 decoded string
+   */
+  private b64decode(str: string): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    let output = '';
+
+    str = String(str).replace(/=+$/, '');
+
+    if (str.length % 4 === 1) {
+      throw new Error('"atob" failed: The string to be decoded is not correctly encoded.');
+    }
+
+    for (
+      // initialize result and counters
+      let bc = 0, bs: any, buffer: any, idx = 0;
+      // get next character
+      (buffer = str.charAt(idx++));
+      // character found in table? initialize bit storage and add its ascii value;
+      ~buffer &&
+      ((bs = bc % 4 ? bs * 64 + buffer : buffer),
+      // and if not first of each 4 characters,
+      // convert the first 8 bits to one ascii character
+      bc++ % 4)
+        ? (output += String.fromCharCode(255 & (bs >> ((-2 * bc) & 6))))
+        : 0
+    ) {
+      // try to find character in table (0-63, not found => -1)
+      buffer = chars.indexOf(buffer);
+    }
+
+    return output;
+  }
+
+  /**
+   * Base64 decoder with unicode support
+   *
+   * @param str Base64 decoded string
+   * @return Base64 decoded string with unicode adjustments
+   */
+  private b64DecodeUnicode(str: any) {
+    return decodeURIComponent(
+      Array.prototype.map
+        .call(this.b64decode(str), (c: any) => {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "Colors": {
+    "Basic": "Basic",
+    "Primary": "Primary",
+    "Accent": "Accent",
+    "Warn": "Warn",
+    "Disabled": "Disabled"
+  },
+  "Elements": {
+    "Basic": "Basic",
+    "Raised": "Raised",
+    "Stroked": "Stroked",
+    "Flat": "Flat",
+    "Icon": "Icon (button)",
+    "Input": "Input",
+    "Checkbox": "Checkbox"
+  },
+  "LoginComponent": {
+    "Login": "Login",
+    "Remember-me": "Remember me",
+    "Email": "Email",
+    "Password": "Password"
+  }
+}

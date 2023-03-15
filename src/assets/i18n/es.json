@@ -1,0 +1,24 @@
+{
+  "Colors": {
+    "Basic": "Básico",
+    "Primary": "Primario",
+    "Accent": "Acento",
+    "Warn": "Aviso",
+    "Disabled": "Deshabilitado"
+  },
+  "Elements": {
+    "Basic": "Básico",
+    "Raised": "Relieve",
+    "Stroked": "Suavizado",
+    "Flat": "Plano",
+    "Icon": "Icono (botón)",
+    "Input": "Entrada",
+    "Checkbox": "Caja marcable"
+  },
+  "LoginComponent": {
+    "Login": "Iniciar sesión",
+    "Remember-me": "Recuérdame",
+    "Email": "Correo electrónico",
+    "Password": "Contraseña"
+  }
+}

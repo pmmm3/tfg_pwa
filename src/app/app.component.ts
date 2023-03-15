@@ -1,17 +1,14 @@
-import { Component } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {Component} from '@angular/core';
+import {Title} from "@angular/platform-browser";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  toppings = this._formBuilder.group({
-    pepperoni: false,
-    extracheese: false,
-    mushroom: false,
-  });
   //TODO: https://hackernoon.com/building-progressive-web-application-pwa-with-angular
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Psicosalud - Formularios psiquiátricos para diagnósticos precisos');
   }
 }
