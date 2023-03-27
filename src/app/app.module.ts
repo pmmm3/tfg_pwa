@@ -17,16 +17,23 @@ import {HttpClient} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {environment} from "../environments/environment";
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {AuthGuard} from "../shared-components/ng-login/auth/auth-guard.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     AppRoutingModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -39,6 +46,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCheckboxModule,
     MatCardModule,
     MatInputModule,
+    MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
     TranslateModule.forRoot({
@@ -49,9 +57,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       },
       defaultLanguage: formatLanguage(navigator.language)
     }),
-    LoginModule
+    LoginModule,
+    MatDividerModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 

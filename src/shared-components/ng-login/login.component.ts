@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, public snackBar: MatSnackBar) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      remember: new FormControl(false)
+      password: new FormControl('', Validators.required)
     });
   }
 
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
    * Creates the login form fields and their validations
    */
   ngOnInit(): void {
-    // If already logged go to home
+    // If already logged go home
     if (this.authService.loggedIn()) {
       this.logged.emit(null);
     }

@@ -21,7 +21,7 @@ export class LoginResponse {
   /**
    * Login access token
    */
-  @autoserializeAs(() => String, 'access_token') accessToken: string | undefined;
+  @autoserializeAs(() => String, 'token') accessToken: string | undefined;
 
   /**
    * If the user is blocked or not
@@ -78,8 +78,7 @@ export class AuthService {
         // with the JWT on an accessToken key
         (data) => {
           if (data.loginOk && data.accessToken) {
-            const storage = credentials.remember ? 'local' : 'session';
-            setStorageObject('remember', { value: credentials.remember }, credentials.remember ? 'local' : 'session');
+            const storage = 'session';
             setStorageObject('access_token', data.accessToken, storage);
             this.accessToken.next(data.accessToken.toString());
           } else if (data.blocked === true) {
@@ -110,7 +109,6 @@ export class AuthService {
    */
   public logout(): void {
     removeStorageObject('access_token');
-    removeStorageObject('remember');
     this.userLoggedOut.next(true);
   }
 }
