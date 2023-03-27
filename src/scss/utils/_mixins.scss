@@ -1,0 +1,247 @@
+@use '@angular/material' as mat;
+@import 'src/scss/palette';
+@import 'screen';
+
+@mixin stylize-text($font-size, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+/***
+  Flex shortcuts
+ */
+@mixin column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin fill-vertical-horizontal() {
+  width: 100%;
+  height: 100%;
+}
+
+// Vertical and horizontal centering
+@mixin center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin horizontal-start() {
+  display: flex;
+  justify-content: flex-start;
+}
+
+@mixin horizontal-end() {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@mixin horizontal-center() {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin vertical-center() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin vertical-end() {
+  display: flex;
+  align-items: flex-end;
+}
+
+/***
+  Gap shortcuts
+  Used to standardize the use of given gaps in the app according to the standardized design
+ */
+@mixin gap-lg() {
+  gap: 1.5rem;
+}
+
+@mixin gap() {
+  gap: 1rem;
+}
+
+@mixin gap-sm() {
+  gap: 0.5rem;
+}
+
+/***
+  * Padding shortcuts
+  * Used to standardize the use of given paddings in the app according to the standardized design
+  * In most cases, you achieve design guidelines by using these shortcuts
+ */
+
+@mixin padding-sm() {
+  padding: 1.25rem; // Equivalent to 20px
+}
+
+@mixin padding() {
+  padding: 2rem; // Equivalent to 32px
+}
+
+@mixin padding-lg() {
+  padding: 3rem; // Equivalent to 48px
+}
+
+/***
+  * Standard container padding
+  * Applies certain paddings to the container according to the screen size
+ */
+@mixin default-container-padding($vertical-padding: 2rem) {
+  padding: $vertical-padding 2rem;
+
+  @include xl {
+    padding: $vertical-padding 10rem;
+  }
+
+  @include lg {
+    padding: $vertical-padding 5rem;
+  }
+
+  @include sm {
+    padding: $vertical-padding 1rem;
+  }
+
+  @include xs {
+    padding: $vertical-padding 0.5rem;
+  }
+}
+
+/***
+  * Standard container border radius
+  * Created to reuse the same border in most of the containers
+ */
+
+// Used in bigger containers
+@mixin container-border-radius {
+  border-radius: 2rem;
+}
+
+// Used in smaller components, e.g. small info cards
+@mixin container-border-radius-sm {
+  border-radius: 1rem;
+}
+
+// Used in smallest components, e.g. small items in paginator
+@mixin container-border-radius-xs {
+  border-radius: 0.5rem;
+}
+
+/***
+  * Reuse the same shadows in most of the components
+ */
+@mixin shadow-1() {
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+@mixin shadow-2() {
+  box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.17);
+}
+
+/***
+  * Font utils
+  * Main advantage is being used directly in the HTML without the need
+  * to create a class only for apply font styles.
+ */
+
+@mixin bold() {
+  font-weight: 700;
+}
+
+@mixin semi-bold() {
+  font-weight: 600;
+}
+
+@mixin medium() {
+  font-weight: 500;
+}
+
+/***
+  * Palette utils
+  * Avoid using mat functions when there are simpler attributes to use
+ */
+
+@mixin primary-color($color: 800) {
+  color: mat.get-color-from-palette($tfg-palette-primary, $color);
+}
+
+@mixin secondary-color($color: 500) {
+  color: mat.get-color-from-palette($tfg-palette-accent, $color);
+}
+
+@mixin grey-color($color: 500) {
+  color: mat.get-color-from-palette($grey-palette, $color);
+}
+
+@mixin error-color($color: 800) {
+  color: mat.get-color-from-palette($error-palette, $color);
+}
+
+@mixin warn-color($color: 500) {
+  color: mat.get-color-from-palette($warn-palette, $color);
+}
+
+@mixin primary-background($color: 100) {
+  background-color: mat.get-color-from-palette($tfg-palette-accent, $color);
+}
+
+@mixin secondary-background($color: 500) {
+  background-color: mat.get-color-from-palette($tfg-palette-accent, $color);
+}
+
+@mixin grey-background($color: 100) {
+  background-color: mat.get-color-from-palette($grey-palette, $color);
+}
+
+/***
+  * Table helper mixins
+ */
+
+/*
+  Used to apply styles to a specific NG dynamic table column
+ */
+@mixin ng-table-column($column-name) {
+  :host ::ng-deep {
+    .mat-mdc-cell,
+    .mat-mdc-header-cell {
+      &.mat-column-#{$column-name} {
+        @content;
+      }
+    }
+  }
+}
+
+/**
+  Used to put ellipsis in an text if is bigger than $lines_number lines
+ */
+@mixin hide-text-with-ellipsis($height: 1.5rem, $lines_number: 2) {
+  display: -webkit-box;
+  max-height: $height;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines_number;
+}
+
+@mixin spinner() {
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

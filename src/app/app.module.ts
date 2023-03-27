@@ -16,6 +16,8 @@ import {createTranslateLoader, formatLanguage} from "../utils/translate";
 import {HttpClient} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {environment} from "../environments/environment";
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import {environment} from "../environments/environment";
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    FlexLayoutModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,0 +1,62 @@
+$bp-xlarge: 1920px;
+$mq-xlarge: '(max-width: #{$bp-xlarge})';
+
+$bp-large: 1500px;
+$mq-large: '(max-width: #{$bp-large})';
+
+$bp-medium: 1280px;
+$mq-medium: '(max-width: #{$bp-medium})';
+
+$bp-small: 960px;
+$mq-small: '(max-width: #{$bp-small})';
+
+$bp-xsmall: 599px;
+$mq-xsmall: '(max-width: #{$bp-xsmall})';
+
+// Small devices
+@mixin xs {
+  @media #{$mq-xsmall} {
+    @content;
+  }
+}
+
+@mixin gt-xs {
+  @media (min-width: #{$bp-xsmall}) {
+    @content;
+  }
+}
+
+// Small devices
+@mixin sm {
+  @media #{$mq-small} {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media #{$mq-medium} {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media #{$mq-large} {
+    @content;
+  }
+}
+
+// Large devices
+@mixin xl {
+  @media #{$mq-xlarge} {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: $screen + 'px') {
+    @content;
+  }
+}

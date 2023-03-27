@@ -24,7 +24,7 @@ export class ApiService {
     }
 
     if (withPath) {
-      url += `/${this.environment.apiPath}/`;
+      url += `/${this.environment.apiPath}`;
     }
 
     return url;

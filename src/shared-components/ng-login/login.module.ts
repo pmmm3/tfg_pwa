@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { environment } from '../../environments/environment';
 import { getStorageObject } from '../../utils/storage-manager';
+import {FlexModule} from "@angular/flex-layout";
 
 /**
  * TODO: this module is included here because of some Angular changes that broke the original ng-login component.
@@ -58,26 +59,27 @@ export function authServiceFactory(
  */
 @NgModule({
   declarations: [LoginComponent],
-  imports: [
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        domainsGetter: getDomains,
-        tokenGetter: getAccessToken
-      }
-    }),
-    BrowserAnimationsModule,
-    FormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-    MatCheckboxModule,
-    RouterModule,
-    TranslateModule
-  ],
+    imports: [
+        HttpClientModule,
+        JwtModule.forRoot({
+            config: {
+                domainsGetter: getDomains,
+                tokenGetter: getAccessToken
+            }
+        }),
+        BrowserAnimationsModule,
+        FormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSnackBarModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        RouterModule,
+        TranslateModule,
+        FlexModule
+    ],
   exports: [LoginComponent, MatFormFieldModule],
   providers: [
     {

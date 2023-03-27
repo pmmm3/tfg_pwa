@@ -121,6 +121,76 @@ $warn-palette: (
       A700: $light-primary-text
     )
 );
+$grey-palette: (
+  50: #fcfcfc,
+  100: #f8f8f8,
+  200: #f2f2f2,
+  300: #e0e0e0,
+  400: #a9a9a9,
+  500: #5c5c5c,
+  700: #333333,
+  800: #252525,
+  A100: #d5d5d5,
+  A200: #aaaaaa,
+  A400: #303030,
+  A700: #616161,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+// Warn palette
+/* prettier-ignore */
+$error-palette: (
+  50  : #ffeaef,
+  100 : #ffcbd4,
+  200 : #ffcbd4,  // Lighter
+  300 : #E7C5C7,
+  400 : #f34757,
+  500 : #C1666B,
+  600 : #C1666B,
+  700 : #87373B,
+  800 : #87373B,  // Darker
+  900 : #bd0022,
+  A100: #046b99, // Status: Info
+  A200: #e97816, // Status: Warning
+  A400: #db0086,
+  A700: #00ae00, // Status: Success
+  contrast:
+    (
+      50  : $dark-primary-text,
+      100 : $dark-primary-text,
+      200 : $dark-primary-text,
+      300 : $dark-primary-text,
+      400 : $dark-primary-text,
+      500 : $light-primary-text,
+      600 : $light-primary-text,
+      700 : $light-primary-text,
+      800 : $light-primary-text,
+      900 : $light-primary-text,
+      A100: $light-primary-text,
+      A200: $light-primary-text,
+      A400: $light-primary-text,
+      A700: $light-primary-text
+    )
+);
+
+$app-grey: mat.define-palette($grey-palette, 500, 300, 800);
+
+$white: #fff;
+$black: #000;
 
 $app-primary: mat.define-palette($tfg-palette-primary, 500, 100, 700);
 $app-accent: mat.define-palette($tfg-palette-accent, 500, 300, 900);

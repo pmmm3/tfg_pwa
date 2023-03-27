@@ -9,7 +9,7 @@ export const environment: EnvironmentInterface = {
   frontendDomain: 'localhost:4200',
   apiDomain: 'localhost',
   apiProtocol: 'http',
-  apiPath: 'api',
+  apiPath: '',
   apiPort: 5000
 };
 
