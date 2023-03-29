@@ -1,6 +1,10 @@
 @use '@angular/material' as mat;
-//Import custom components
+@import 'theme.scss';
+@import 'utils/mixins';
+
 @import 'components/cards';
+@import 'components/form';
+
 
 html,
 body {
@@ -8,6 +12,12 @@ body {
   height: 100%;
   margin: 0;
   background-color: mat.get-color-from-palette($app-grey, 50);
+}
+.center{
+  @include center;
+}
+.fit-content{
+  @include fit-content;
 }
 
 /* You can add global styles to this file, and also import other style files */
