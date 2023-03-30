@@ -13,7 +13,7 @@
 }
 
 .card {
-  @include container-border-radius;
+  @include container-border-radius-sm;
   @include shadow-1;
   @include padding-sm;
   @include column;

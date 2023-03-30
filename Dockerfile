@@ -24,15 +24,13 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN . "$NVM_DIR/nvm.sh" && \
-    npm install
+RUN . "$NVM_DIR/nvm.sh" && npm install --force
 
 # Copy the rest of the application code to the container
 COPY . .
 
 # Build the application
-RUN . "$NVM_DIR/nvm.sh" && \
-    npm run build --prod
+RUN . "$NVM_DIR/nvm.sh" && npm run build --prod
 
 # Use a lightweight Nginx image as a parent image
 FROM nginx:stable-alpine
