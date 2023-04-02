@@ -7,18 +7,22 @@ import {SwUpdate} from "@angular/service-worker";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   //TODO: https://hackernoon.com/building-progressive-web-application-pwa-with-angular
   constructor(private titleService: Title, private swUpdate: SwUpdate) {
     this.titleService.setTitle('Psicosalud - Formularios psiquiátricos para diagnósticos precisos');
   }
+
   ngOnInit() {
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
-        if (confirm('New version available. Load New Version?')) {
-          window.location.reload();
+          if (confirm('' +
+            'Hay una nueva versión disponible. ' + ' ¿Desea actualizar?')) {
+            window.location.reload();
+          }
         }
-      });
+      )
+      ;
     }
   }
 }
