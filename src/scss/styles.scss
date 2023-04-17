@@ -2,8 +2,6 @@
 @import 'theme.scss';
 @import 'utils/mixins';
 
-@import 'components/cards';
-@import 'components/form';
 
 
 html,
@@ -19,8 +17,14 @@ body {
 .fit-content{
   @include fit-content;
 }
+.gap{
+  @include gap;
+}
+.gap-lg{
+  @include gap-lg;
+}
 
 /* You can add global styles to this file, and also import other style files */
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }

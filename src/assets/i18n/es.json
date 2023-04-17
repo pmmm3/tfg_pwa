@@ -18,7 +18,10 @@
   "LoginComponent": {
     "Login": "Iniciar sesión",
     "Remember-me": "Recuérdame",
-    "Email": "Correo electrónico",
-    "Password": "Contraseña"
+    "Email-label": "Correo electrónico",
+    "Email-placeholder": "ejemplo@dominio.com",
+    "Email-error": "Correo electrónico inválido",
+    "Password": "Contraseña",
+    "Field-required": "Campo requerido"
   }
 }

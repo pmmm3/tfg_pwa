@@ -1,33 +1,42 @@
-<mat-card class="card fit-content">
-  <form novalidate [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="row" fxLayoutAlign="center center">
-    <div fxLayout="column">
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="{{ 'LoginComponent.Email' | translate }}"
-          type="email"
-          formControlName="email"
-          name="email"
-          required
-        />
-      </mat-form-field>
+<form novalidate [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="row" fxLayoutAlign="center center">
+  <div fxLayout="column" class="gap">
+    <mat-form-field>
+      <mat-label>{{ 'LoginComponent.Email-label' | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ 'LoginComponent.Email-placeholder' | translate }}"
+        type="email"
+        formControlName="email"
+        name="email"
+        required
+      />
+      <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+        {{ 'LoginComponent.Field-required' | translate }}
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+        {{ 'LoginComponent.Email-error' | translate }}
+      </mat-error>
+    </mat-form-field>
 
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="{{ 'LoginComponent.Password' | translate }}"
-          type="password"
-          formControlName="password"
-          name="password"
-          required
-        />
-      </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'LoginComponent.Password' | translate }}</mat-label>
+      <input
+        matInput
+        placeholder="**********"
+        type="password"
+        formControlName="password"
+        name="password"
+        required
+      />
+      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+        {{ 'LoginComponent.Field-required' | translate }}
+      </mat-error>
+    </mat-form-field>
 
-      <span fxFlexAlign="stretch">
+    <span fxFlexAlign="center">
       <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">
         {{ 'LoginComponent.Login' | translate }}
       </button>
     </span>
-    </div>
-  </form>
-</mat-card>
+  </div>
+</form>

@@ -55,7 +55,7 @@ import {AuthGuard} from "../shared-components/ng-login/auth/auth-guard.service";
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       },
-      defaultLanguage: formatLanguage(navigator.language)
+      defaultLanguage: 'es',
     }),
     LoginModule,
     MatDividerModule

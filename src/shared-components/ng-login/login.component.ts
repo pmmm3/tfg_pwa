@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
    */
   constructor(private authService: AuthService, public snackBar: MatSnackBar) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required)
     });
   }
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
             this.authService.redirectUrl = null;
           }
         } else {
-          this.snackBar.open('Wrong credentials', '', {
+          this.snackBar.open('Credenciales incorrectas', '', {
             duration: 3000
           });
         }

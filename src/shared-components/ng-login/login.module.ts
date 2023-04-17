@@ -9,7 +9,11 @@ import { LoginComponent } from './login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+  MatFormFieldDefaultOptions,
+  MatFormFieldModule
+} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
@@ -86,6 +90,12 @@ export function authServiceFactory(
       provide: AuthService,
       useFactory: authServiceFactory,
       deps: [HttpClient, ApiService, CustomSnackbarService]
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'outline'
+      } as MatFormFieldDefaultOptions
     }
   ]
 })
