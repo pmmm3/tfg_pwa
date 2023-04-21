@@ -1,0 +1,34 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <span routerLink="/">PsicoSalud</span>
+  <div fxHide.lt-md fxFlexOffset="10" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20">
+    <button
+      *ngFor="let link of links"
+      class="nav-button"
+      mat-menu-item
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}"
+      [routerLink]="link.route"
+      [ngClass]="{ 'active': link.route === currentRoute }"
+    >
+      <span>{{link.label}}</span>
+    </button>
+  </div>
+  <div fxHide.gt-sm>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        *ngFor="let link of links"
+        mat-menu-item
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        [routerLink]="link.route"
+      >
+        <!-- TODO: Selected route with primary color -->
+        <mat-icon >{{link.icon}}</mat-icon>
+        <span>{{link.label}}</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

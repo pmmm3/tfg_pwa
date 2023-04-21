@@ -22,6 +22,14 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {AuthGuard} from "../shared-components/ng-login/auth/auth-guard.service";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {NgOptimizedImage} from "@angular/common";
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatRippleModule} from "@angular/material/core";
+import {MatListModule} from "@angular/material/list";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
@@ -29,7 +37,8 @@ import {AuthGuard} from "../shared-components/ng-login/auth/auth-guard.service";
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +67,14 @@ import {AuthGuard} from "../shared-components/ng-login/auth/auth-guard.service";
       defaultLanguage: 'es',
     }),
     LoginModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    NgOptimizedImage,
+    MatMenuModule,
+    MatRippleModule,
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
