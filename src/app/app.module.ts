@@ -25,6 +25,11 @@ import {AuthGuard} from "../shared-components/ng-login/auth/auth-guard.service";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {NgOptimizedImage} from "@angular/common";
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatRippleModule} from "@angular/material/core";
+import {MatListModule} from "@angular/material/list";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule({
@@ -32,7 +37,8 @@ import {NgOptimizedImage} from "@angular/common";
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,11 @@ import {NgOptimizedImage} from "@angular/common";
     MatDividerModule,
     MatSidenavModule,
     MatToolbarModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatMenuModule,
+    MatRippleModule,
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

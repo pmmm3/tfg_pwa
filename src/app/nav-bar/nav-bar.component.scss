@@ -1,0 +1,11 @@
+.active {
+  background-color: #fcfcfc;
+  $radius: 20px;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  position: relative;
+  bottom:-9px;
+}
+.nav-button{
+  width: fit-content;
+}
