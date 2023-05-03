@@ -6,14 +6,14 @@
         matInput
         placeholder="{{ 'LoginComponent.Email-placeholder' | translate }}"
         type="email"
-        formControlName="email"
+        formControlName="username"
         name="email"
         required
       />
-      <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+      <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
         {{ 'LoginComponent.Field-required' | translate }}
       </mat-error>
-      <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+      <mat-error *ngIf="loginForm.controls['username'].hasError('email')">
         {{ 'LoginComponent.Email-error' | translate }}
       </mat-error>
     </mat-form-field>
