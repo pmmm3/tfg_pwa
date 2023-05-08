@@ -1,0 +1,54 @@
+<mat-card class="login gap">
+  <img src="assets/imgs/logo.svg" alt="Logo" />
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submitForm()"
+    fxLayout="column"
+    fxLayoutGap="40"
+  >
+    <section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10">
+      <h1>Bienvenido/a!</h1>
+      <h2>Completa tu cuenta</h2>
+    </section>
+    <section fxLayout="column">
+      <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput placeholder="Correo" formControlName="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <input matInput placeholder="Apellidos" formControlName="lastname" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Contraseña"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          type="button"
+          matSuffix
+          (click)="togglePasswordVisibility()"
+          aria-label="Mostrar/Ocultar contraseña"
+        >
+          <mat-icon>{{
+            showPassword ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+        </button>
+        <mat-error *ngIf="isFieldInvalid('password')"
+          >La contraseña es requerida</mat-error
+        >
+      </mat-form-field>
+    </section>
+    <button mat-raised-button type="submit" [disabled]="form.invalid">
+      Enviar
+    </button>
+  </form>
+</mat-card>

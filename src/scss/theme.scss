@@ -6,10 +6,10 @@ $my-theme: mat.define-light-theme(
     color: (
       primary: palette.$app-primary,
       accent: palette.$app-accent,
-      warn: palette.$app-status
+      warn: palette.$app-status,
     ),
     typography: mat.define-typography-config(),
-    density: 0
+    density: 0,
   )
 );
 

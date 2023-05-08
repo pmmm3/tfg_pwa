@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export const SUPPORTED_LANGS = {
   en: 'en',
-  es: 'es'
+  es: 'es',
 };
 
 type SupportedLangsStrings = keyof typeof SUPPORTED_LANGS;
 
 export const defaultLang = SUPPORTED_LANGS.en;
-
 
 // Factory for the TranslateModule
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {

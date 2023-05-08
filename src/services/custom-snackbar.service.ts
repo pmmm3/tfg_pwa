@@ -1,4 +1,8 @@
-import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import {
+  MatSnackBar,
+  MatSnackBarRef,
+  SimpleSnackBar,
+} from '@angular/material/snack-bar';
 import { Observable, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -9,7 +13,7 @@ import { Injectable } from '@angular/core';
  * This service retrieves the region files from the API
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomSnackbarService extends MatSnackBar {
   /**
@@ -21,7 +25,11 @@ export class CustomSnackbarService extends MatSnackBar {
    *
    * @returns Reference to the snackbar
    */
-  public present(message: string, action = '', duration = 3000): MatSnackBarRef<SimpleSnackBar> {
+  public present(
+    message: string,
+    action = '',
+    duration = 3000
+  ): MatSnackBarRef<SimpleSnackBar> {
     return this.open(message, action, { duration });
   }
 
@@ -31,7 +39,10 @@ export class CustomSnackbarService extends MatSnackBar {
    * @param e Error response from subscribe
    */
   public showError(e: HttpErrorResponse): Observable<never> {
-    const errorMessage = e.error && e.error.message ? 'Error: ' + e.error.message : 'Error: Something went wrong';
+    const errorMessage =
+      e.error && e.error.message
+        ? 'Error: ' + e.error.message
+        : 'Error: Something went wrong';
     this.present(errorMessage);
 
     return throwError(e);

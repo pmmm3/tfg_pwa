@@ -11,7 +11,7 @@ import { skip } from 'rxjs/operators';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ng-login',
   styleUrls: ['./login.component.scss'],
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
 })
 
 /**
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, public snackBar: MatSnackBar) {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.required),
     });
   }
 
@@ -59,16 +59,20 @@ export class LoginComponent implements OnInit {
       .subscribe((accessToken) => {
         if (accessToken) {
           if (accessToken === 'true') {
-            this.snackBar.open('The account is locked, an admin has to accept your account. Try again later.', '', {
-              duration: 3000
-            });
+            this.snackBar.open(
+              'The account is locked, an admin has to accept your account. Try again later.',
+              '',
+              {
+                duration: 3000,
+              }
+            );
           } else {
             this.logged.emit(this.authService.redirectUrl);
             this.authService.redirectUrl = null;
           }
         } else {
           this.snackBar.open('Credenciales incorrectas', '', {
-            duration: 3000
+            duration: 3000,
           });
         }
       });

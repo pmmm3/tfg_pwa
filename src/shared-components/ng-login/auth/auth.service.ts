@@ -1,13 +1,21 @@
-import {BehaviorSubject, Subject} from 'rxjs';
-import {Deserialize, IJsonObject, autoserializeAs} from 'dcerialize';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators';
-import {getStorageObject, removeStorageObject, setStorageObject} from '../../../utils/storage-manager';
-import {ApiService} from 'src/services/api.service';
-import {CredentialsInterface} from '../../../interfaces/user.interface';
-import {CustomSnackbarService} from '../../../services/custom-snackbar.service';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/internal/Observable';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Deserialize, IJsonObject, autoserializeAs } from 'dcerialize';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import {
+  getStorageObject,
+  removeStorageObject,
+  setStorageObject,
+} from '../../../utils/storage-manager';
+import { ApiService } from 'src/services/api.service';
+import { CredentialsInterface } from '../../../interfaces/user.interface';
+import { CustomSnackbarService } from '../../../services/custom-snackbar.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 
 /**
  * Login response structure
@@ -16,8 +24,9 @@ export class LoginResponse {
   /**
    * Login access token
    */
-  @autoserializeAs(() => String, 'access_token') accessToken: string | undefined;
-
+  @autoserializeAs(() => String, 'access_token') accessToken:
+    | string
+    | undefined;
 }
 
 /**
@@ -65,7 +74,9 @@ export class AuthService {
       .post<IJsonObject>(this.apiService.getApiUrl() + 'auth/token', formData)
       .pipe(
         map((response) => Deserialize(response, () => LoginResponse)),
-        catchError((err: HttpErrorResponse) => this.snackBarService.showError(err))
+        catchError((err: HttpErrorResponse) =>
+          this.snackBarService.showError(err)
+        )
       )
       .subscribe(
         // We're assuming the response will be an object

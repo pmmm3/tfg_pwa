@@ -10,7 +10,7 @@ export const environment: EnvironmentInterface = {
   apiDomain: 'localhost',
   apiProtocol: 'http',
   apiPath: 'api/',
-  apiPort: 8000
+  apiPort: 8000,
 };
 
 /*

@@ -1,28 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
-  currentRoute: string = '';
+  currentRoute = '';
   links = [
     {
-      'label': 'Cuestionarios',
-      'icon': 'assignment',
-      'route': '/forms',
+      label: 'Cuestionarios',
+      icon: 'assignment',
+      route: '/forms',
     },
     {
-      'label': 'Cuenta',
-      'icon': 'profile',
-      'route': '/profile',
-    }
-  ]
+      label: 'Cuenta',
+      icon: 'profile',
+      route: '/profile',
+    },
+  ];
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {

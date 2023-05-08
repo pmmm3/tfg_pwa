@@ -77,7 +77,9 @@ export class JwtHelperService {
    * @param token JWT token
    * @return Token's expiration date
    */
-  public getTokenExpirationDate(token: string = this.tokenGetter()): Date | null {
+  public getTokenExpirationDate(
+    token: string = this.tokenGetter()
+  ): Date | null {
     const decoded = this.decodeToken(token);
 
     // eslint-disable-next-line no-prototype-builtins
@@ -97,13 +99,16 @@ export class JwtHelperService {
    * @return Base64 decoded string
    */
   private b64decode(str: string): string {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    const chars =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     let output = '';
 
     str = String(str).replace(/=+$/, '');
 
     if (str.length % 4 === 1) {
-      throw new Error('"atob" failed: The string to be decoded is not correctly encoded.');
+      throw new Error(
+        '"atob" failed: The string to be decoded is not correctly encoded.'
+      );
     }
 
     for (

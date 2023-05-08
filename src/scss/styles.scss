@@ -2,8 +2,6 @@
 @import 'theme.scss';
 @import 'utils/mixins';
 
-
-
 html,
 body {
   @include grey-color(800); // Default text color
@@ -11,20 +9,40 @@ body {
   margin: 0;
   background-color: mat.get-color-from-palette($app-grey, 50);
 }
-.center{
+
+.center {
   @include center;
 }
-.fit-content{
+
+.fit-content {
   @include fit-content;
 }
-.gap{
+
+.gap {
   @include gap;
 }
-.gap-lg{
+
+.gap-lg {
   @include gap-lg;
 }
 
 /* You can add global styles to this file, and also import other style files */
 * {
   font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  color: mat.get-color-from-palette($app-primary, 900);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  color: mat.get-color-from-palette($app-primary, 900);
 }

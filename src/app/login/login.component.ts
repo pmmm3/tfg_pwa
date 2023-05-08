@@ -1,17 +1,15 @@
-import {Component} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private router: Router) {
-  }
-
+  constructor(private router: Router) {}
 
   redirect($event: any) {
-    this.router.navigate(['/home']).then( );
+    this.router.navigate(['/home']).then();
   }
 }
