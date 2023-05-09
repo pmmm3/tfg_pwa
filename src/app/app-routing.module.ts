@@ -21,6 +21,10 @@ const routes: Routes = [
     component: ActivateAccountComponent,
   },
   {
+    path: 'register',
+    component: ActivateAccountComponent,
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: '/home',

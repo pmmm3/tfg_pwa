@@ -18,6 +18,7 @@ export class ActivateAccountComponent implements OnInit {
   form: FormGroup;
   showPassword = false;
   token = '';
+  isRegistering = false;
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +33,7 @@ export class ActivateAccountComponent implements OnInit {
     });
   }
 
-  submitForm() {
+  submitActivate() {
     // Get the token from the url and decode it
     if (this.form.valid) {
       const data = {
@@ -46,6 +47,9 @@ export class ActivateAccountComponent implements OnInit {
       this.form.markAllAsTouched();
     }
   }
+  submitRegister() {
+  // Todo
+  }
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
@@ -58,12 +62,18 @@ export class ActivateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.router.parseUrl(this.router.url).queryParams['token'];
-    // Set email value on form and disable it
-    // Decode the token and cast the result to the DecodedToken interface
-    const decodedToken = jwt_decode(this.token) as DecodedToken;
+    if (!this.token && this.router.url.includes('register')) {
+      this.isRegistering = true;
+      this.form.get('email')?.enable();
+    }
+    else {
+      // Set email value on form and disable it
+      // Decode the token and cast the result to the DecodedToken interface
+      const decodedToken = jwt_decode(this.token) as DecodedToken;
 
-    // Set email value on form and disable it
-    this.form.get('email')!.setValue(decodedToken.email);
-    this.form.get('email')?.disable();
+      // Set email value on form and disable it
+      this.form.get('email')!.setValue(decodedToken.email);
+      this.form.get('email')?.disable();
+    }
   }
 }

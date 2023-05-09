@@ -2,13 +2,13 @@
   <img src="assets/imgs/logo.svg" alt="Logo" />
   <form
     [formGroup]="form"
-    (ngSubmit)="submitForm()"
+    (ngSubmit)="isRegistering ? submitRegister() : submitActivate()"
     fxLayout="column"
     fxLayoutGap="40"
   >
     <section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10">
       <h1>Bienvenido/a!</h1>
-      <h2>Completa tu cuenta</h2>
+      <h2 *ngIf="!isRegistering">Completa tu cuenta</h2>
     </section>
     <section fxLayout="column">
       <mat-form-field>
@@ -48,7 +48,7 @@
       </mat-form-field>
     </section>
     <button mat-raised-button type="submit" [disabled]="form.invalid">
-      Enviar
+      {{ isRegistering ? 'Registrarse' : 'Activar cuenta'}}
     </button>
   </form>
 </mat-card>
