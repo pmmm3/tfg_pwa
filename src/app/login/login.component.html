@@ -1,4 +1,6 @@
-<div class="login">
-  <img src="assets/imgs/logo.svg" alt="Logo">
+<mat-card class="login gap">
+  <img src="assets/imgs/logo.svg" alt="Logo" />
   <ng-login (logged)="redirect($event)"></ng-login>
-</div>
+  <a mat-flat-button [routerLink]="['/register']"> ¿No tienes cuenta? </a>
+
+</mat-card>

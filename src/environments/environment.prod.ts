@@ -5,5 +5,5 @@ export const environment: EnvironmentInterface = {
   frontendDomain: 'www.example.com',
   apiDomain: 'api.example.com',
   apiProtocol: 'https',
-  apiPath: 'api'
+  apiPath: 'api',
 };

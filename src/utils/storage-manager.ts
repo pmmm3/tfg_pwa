@@ -6,12 +6,14 @@
  */
 import { StorageTableConfigInterface } from '../interfaces/utils.interface';
 
+
 export function getStorageObject(key: string): any {
   if (sessionStorage.getItem(key)) {
     return JSON.parse(<string>sessionStorage.getItem(key));
   } else if (localStorage.getItem(key)) {
     return JSON.parse(<string>localStorage.getItem(key));
   }
+  return undefined;
 }
 
 /**
@@ -32,7 +34,11 @@ export function removeStorageObject(key: string): void {
  * @param storage Storage section, should be either 'local' or 'session'
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function setStorageObject<T>(key: string, value: T, storage = 'local'): void {
+export function setStorageObject<T>(
+  key: string,
+  value: T,
+  storage = 'local'
+): void {
   if (storage === 'session') {
     sessionStorage.setItem(key, JSON.stringify(value));
   } else {
@@ -51,7 +57,11 @@ type MultipleTableConfig = Record<string, TableConfiguration>;
 /**
  * Save a table configuration: current page, selected filter, etc.
  */
-export function setStorageTableConfig(storage: string, table: string, config: TableConfiguration): void {
+export function setStorageTableConfig(
+  storage: string,
+  table: string,
+  config: TableConfiguration
+): void {
   let sessionParam: MultipleTableConfig = getStorageObject(storage);
   if (!sessionParam) {
     sessionParam = {};
@@ -62,8 +72,12 @@ export function setStorageTableConfig(storage: string, table: string, config: Ta
   setStorageObject(storage, sessionParam, 'local');
 }
 
-export function getStorageTableConfig(storageName: string, table: string): StorageTableConfigInterface | null {
-  const tableConfs: Record<string, StorageTableConfigInterface> = getStorageObject(storageName);
+export function getStorageTableConfig(
+  storageName: string,
+  table: string
+): StorageTableConfigInterface | null {
+  const tableConfs: Record<string, StorageTableConfigInterface> =
+    getStorageObject(storageName);
 
   if (tableConfs) {
     return tableConfs[table];

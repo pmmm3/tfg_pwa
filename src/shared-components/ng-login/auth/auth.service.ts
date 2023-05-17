@@ -1,8 +1,16 @@
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Deserialize, IJsonObject, autoserializeAs } from 'dcerialize';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { getStorageObject, removeStorageObject, setStorageObject } from '../../../utils/storage-manager';
+import {
+  getStorageObject,
+  removeStorageObject,
+  setStorageObject,
+} from '../../../utils/storage-manager';
 import { ApiService } from 'src/services/api.service';
 import { CredentialsInterface } from '../../../interfaces/user.interface';
 import { CustomSnackbarService } from '../../../services/custom-snackbar.service';
@@ -14,19 +22,11 @@ import { Observable } from 'rxjs/internal/Observable';
  */
 export class LoginResponse {
   /**
-   * If the login was successful or not
-   */
-  @autoserializeAs(() => Boolean, 'login_ok') loginOk: boolean | undefined;
-
-  /**
    * Login access token
    */
-  @autoserializeAs(() => String, 'token') accessToken: string | undefined;
-
-  /**
-   * If the user is blocked or not
-   */
-  @autoserializeAs(() => Boolean, 'blocked') blocked: boolean | undefined;
+  @autoserializeAs(() => String, 'access_token') accessToken:
+    | string
+    | undefined;
 }
 
 /**
@@ -67,22 +67,25 @@ export class AuthService {
    * @returns The data object with the accessToken or an error
    */
   public login(credentials: CredentialsInterface): Observable<string> {
+    const formData = new FormData();
+    formData.append('username', credentials.username);
+    formData.append('password', credentials.password);
     this.http
-      .post<IJsonObject>(this.apiService.getApiUrl() + 'auth/login', credentials)
+      .post<IJsonObject>(this.apiService.getApiUrl() + 'auth/token', formData)
       .pipe(
         map((response) => Deserialize(response, () => LoginResponse)),
-        catchError((err: HttpErrorResponse) => this.snackBarService.showError(err))
+        catchError((err: HttpErrorResponse) =>
+          this.snackBarService.showError(err)
+        )
       )
       .subscribe(
         // We're assuming the response will be an object
         // with the JWT on an accessToken key
         (data) => {
-          if (data.loginOk && data.accessToken) {
+          if (data.accessToken) {
             const storage = 'session';
             setStorageObject('access_token', data.accessToken, storage);
             this.accessToken.next(data.accessToken.toString());
-          } else if (data.blocked === true) {
-            this.accessToken.next(data.blocked.toString());
           } else {
             this.accessToken.next('');
           }

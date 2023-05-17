@@ -1,4 +1,8 @@
-import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import {
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from '@angular/common/http';
 import { Inject, Injectable, Injector } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -8,7 +12,7 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 /**
  * JWT interceptor
@@ -60,7 +64,10 @@ export class JwtInterceptor implements HttpInterceptor {
     this.tokenGetter = config.tokenGetter;
     this.domainsGetter = config.domainsGetter;
     this.headerName = config.headerName || 'Authorization';
-    this.authScheme = config.authScheme || config.authScheme === '' ? config.authScheme : 'Bearer ';
+    this.authScheme =
+      config.authScheme || config.authScheme === ''
+        ? config.authScheme
+        : 'Bearer ';
     this.throwNoTokenError = config.throwNoTokenError || false;
     this.skipWhenExpired = config.skipWhenExpired;
   }
@@ -77,7 +84,9 @@ export class JwtInterceptor implements HttpInterceptor {
 
       return (
         whitelistedDomains.findIndex((domain) =>
-          typeof domain === 'string' ? domain === requestUrl.host : domain.test(requestUrl.host)
+          typeof domain === 'string'
+            ? domain === requestUrl.host
+            : domain.test(requestUrl.host)
         ) > -1
       );
     } else {
@@ -129,8 +138,8 @@ export class JwtInterceptor implements HttpInterceptor {
     if (token) {
       return request.clone({
         setHeaders: {
-          [this.headerName]: `${this.authScheme}${token}`
-        }
+          [this.headerName]: `${this.authScheme}${token}`,
+        },
       });
     } else {
       return request.clone();
@@ -146,8 +155,8 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return request.clone({
       setHeaders: {
-        ['domain']: domain[0]
-      }
+        ['domain']: domain[0],
+      },
     });
   }
 }

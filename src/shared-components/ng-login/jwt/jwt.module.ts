@@ -39,9 +39,13 @@ export class JwtModule {
   /**
    * Constructor
    */
-  constructor(@Inject('PARENT_MODULE') @Optional() @SkipSelf() parentModule: JwtModule) {
+  constructor(
+    @Inject('PARENT_MODULE') @Optional() @SkipSelf() parentModule: JwtModule
+  ) {
     if (parentModule) {
-      throw new Error("JwtModule is already loaded. It should only be imported in your application's main module.");
+      throw new Error(
+        "JwtModule is already loaded. It should only be imported in your application's main module."
+      );
     }
   }
 
@@ -57,14 +61,14 @@ export class JwtModule {
         {
           provide: HTTP_INTERCEPTORS,
           useClass: JwtInterceptor,
-          multi: true
+          multi: true,
         },
         options.jwtOptionsProvider || {
           provide: JWT_OPTIONS,
-          useValue: options.config
+          useValue: options.config,
         },
-        JwtHelperService
-      ]
+        JwtHelperService,
+      ],
     };
   }
 }
