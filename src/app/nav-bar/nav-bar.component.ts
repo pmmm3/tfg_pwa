@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
     },
     {
       label: 'Cuenta',
-      icon: 'profile',
+      icon: 'person',
       route: '/profile',
     },
   ];

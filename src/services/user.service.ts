@@ -3,7 +3,7 @@ import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivateUser, User } from '../models/user';
 import { Observable } from 'rxjs';
-import { Deserialize, IJsonObject, Serialize } from 'dcerialize';
+import { Deserialize, IJsonObject } from 'dcerialize';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({

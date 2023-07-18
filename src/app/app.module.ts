@@ -31,6 +31,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
+import { InfoDialogComponent } from './info-dialog/info-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { ActivateAccountComponent } from './activate-account/activate-account.co
     NotFoundComponent,
     NavBarComponent,
     ActivateAccountComponent,
+    InfoDialogComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +83,7 @@ import { ActivateAccountComponent } from './activate-account/activate-account.co
     MatRippleModule,
     MatListModule,
     MatExpansionModule,
+    MatDialogModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

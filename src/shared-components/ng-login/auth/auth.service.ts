@@ -71,7 +71,7 @@ export class AuthService {
     formData.append('username', credentials.username);
     formData.append('password', credentials.password);
     this.http
-      .post<IJsonObject>(this.apiService.getApiUrl() + 'auth/token', formData)
+      .post<IJsonObject>(this.apiService.getApiUrl() + 'api/auth/token', formData)
       .pipe(
         map((response) => Deserialize(response, () => LoginResponse)),
         catchError((err: HttpErrorResponse) =>

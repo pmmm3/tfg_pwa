@@ -1,40 +1,26 @@
 @use '@angular/material' as mat;
 @import 'theme.scss';
-@import 'utils/mixins';
 
 html,
 body {
-  @include grey-color(800); // Default text color
   height: 100%;
   margin: 0;
- // background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
- //background-blend-mode: screen;
-  background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
- background-blend-mode: normal,color-burn;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 8%, rgba(236, 236, 236, 1) 100%);
 }
-.mat-toolbar{
+
+.mat-toolbar {
   background-color: transparent;
 }
 
-.center {
-  @include center;
-}
-
-.fit-content {
-  @include fit-content;
-}
-
-.gap {
-  @include gap;
-}
-
-.gap-lg {
-  @include gap-lg;
-}
 
 /* You can add global styles to this file, and also import other style files */
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
+}
+
+@mixin dark-blue{
+  color: #023047
 }
 
 h1 {
@@ -42,7 +28,7 @@ h1 {
   font-weight: 600;
   margin: 0;
   padding: 0;
-  color: mat.get-color-from-palette($app-primary, 900);
+  @include dark-blue;
 }
 
 h2 {
@@ -50,5 +36,5 @@ h2 {
   font-weight: 600;
   margin: 0;
   padding: 0;
-  color: mat.get-color-from-palette($app-primary, 900);
+  @include dark-blue;
 }

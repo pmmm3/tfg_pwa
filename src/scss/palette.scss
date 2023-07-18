@@ -16,199 +16,39 @@
 /*
  * Variables used in palette
  */
-$dark-primary-text: #000000;
-$light-primary-text: #ffff;
-
 $tfg-palette-primary: (
-  50: #e9f8fc,
-  100: #c9edf6,
-  200: #a5e2f1,
-  300: #80d6eb,
-  400: #65cde6,
-  500: #4ac4e2,
-  600: #43bedf,
-  700: #3ab6da,
-  800: #32afd6,
-  900: #22a2cf,
-  A100: #ffffff,
-  A200: #d5f3ff,
-  A400: #a2e5ff,
-  A700: #89deff,
+  50 : #e2f0f2,
+  100 : #b7d9df,
+  200 : #87bfca,
+  300 : #56a5b4,
+  400 : #3292a4,
+  500 : #0e7f94,
+  600 : #0c778c,
+  700 : #0a6c81,
+  800 : #086277,
+  900 : #044f65,
+  A100 : #95e3ff,
+  A200 : #62d6ff,
+  A400 : #2fc9ff,
+  A700 : #15c2ff,
   contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #000000,
-    900: #000000,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000,
-  ),
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
 );
-
-$tfg-palette-accent: (
-  50: #fcede9,
-  100: #f6d2c9,
-  200: #f1b4a5,
-  300: #eb9580,
-  400: #e67f65,
-  500: #e2684a,
-  600: #df6043,
-  700: #da553a,
-  800: #d64b32,
-  900: #cf3a22,
-  A100: #ffffff,
-  A200: #ffdad5,
-  A400: #ffada2,
-  A700: #ff9789,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000,
-  ),
-);
-
-// Warn palette
-/* prettier-ignore */
-$warn-palette: (
-  50  : #ffeaef,
-  100 : #ffcbd4,
-  200 : #f0969e,  // Lighter
-  300 : #e76d78,
-  400 : #f34757,
-  500 : #fa2e3e,
-  600 : #ea223d,  // Status: Error, cancel
-  700 : #d81436,
-  800 : #cb062f,  // Darker
-  900 : #bd0022,
-  A100: #046b99, // Status: Info
-  A200: #e97816, // Status: Warning
-  A400: #db0086,
-  A700: #00ae00, // Status: Success
-  contrast:
-    (
-      50  : $dark-primary-text,
-      100 : $dark-primary-text,
-      200 : $dark-primary-text,
-      300 : $dark-primary-text,
-      400 : $dark-primary-text,
-      500 : $dark-primary-text,
-      600 : $light-primary-text,
-      700 : $light-primary-text,
-      800 : $light-primary-text,
-      900 : $light-primary-text,
-      A100: $light-primary-text,
-      A200: $light-primary-text,
-      A400: $light-primary-text,
-      A700: $light-primary-text
-    )
-);
-$grey-palette: (
-  50: #fcfcfc,
-  100: #f8f8f8,
-  200: #f2f2f2,
-  300: #e0e0e0,
-  400: #a9a9a9,
-  500: #5c5c5c,
-  700: #333333,
-  800: #252525,
-  A100: #d5d5d5,
-  A200: #aaaaaa,
-  A400: #303030,
-  A700: #616161,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
-  ),
-);
-// Warn palette
-/* prettier-ignore */
-$error-palette: (
-  50  : #ffeaef,
-  100 : #ffcbd4,
-  200 : #ffcbd4,  // Lighter
-  300 : #E7C5C7,
-  400 : #f34757,
-  500 : #C1666B,
-  600 : #C1666B,
-  700 : #87373B,
-  800 : #87373B,  // Darker
-  900 : #bd0022,
-  A100: #046b99, // Status: Info
-  A200: #e97816, // Status: Warning
-  A400: #db0086,
-  A700: #00ae00, // Status: Success
-  contrast:
-    (
-      50  : $dark-primary-text,
-      100 : $dark-primary-text,
-      200 : $dark-primary-text,
-      300 : $dark-primary-text,
-      400 : $dark-primary-text,
-      500 : $light-primary-text,
-      600 : $light-primary-text,
-      700 : $light-primary-text,
-      800 : $light-primary-text,
-      900 : $light-primary-text,
-      A100: $light-primary-text,
-      A200: $light-primary-text,
-      A400: $light-primary-text,
-      A700: $light-primary-text
-    )
-);
-
-$app-grey: mat.define-palette($grey-palette, 500, 300, 800);
-
-$white: #fff;
-$black: #000;
 
 $app-primary: mat.define-palette($tfg-palette-primary, 500, 100, 700);
-$app-accent: mat.define-palette($tfg-palette-accent, 500, 300, 900);
-$app-status: mat.define-palette($warn-palette, 600, 200, 800);
-
-$status-color-error: mat.get-color-from-palette($app-status, 600);
-$status-contrast-error: mat.get-color-from-palette($app-status, 600-contrast);
-
-$status-color-warning: mat.get-color-from-palette($app-status, A200);
-$status-contrast-warning: mat.get-color-from-palette(
-  $app-status,
-  A200-contrast
-);
-
-$status-color-info: mat.get-color-from-palette($app-status, A100);
-$status-contrast-info: mat.get-color-from-palette($app-status, A100-contrast);
-
-$status-color-success: mat.get-color-from-palette($app-status, A700);
-$status-contrast-success: mat.get-color-from-palette(
-  $app-status,
-  A700-contrast
-);
+$app-accent: mat.define-palette(mat.$teal-palette, A200, A100, A400);
+$app-warn: mat.define-palette(mat.$red-palette, 500, 100, 700);
