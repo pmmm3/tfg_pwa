@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @import 'theme.scss';
+@import 'mixins';
 
 html,
 body {
@@ -19,9 +20,6 @@ body {
   font-family: 'DM Sans', sans-serif;
 }
 
-@mixin dark-blue{
-  color: #023047
-}
 
 h1 {
   font-size: 2.5rem;
@@ -38,3 +36,17 @@ h2 {
   padding: 0;
   @include dark-blue;
 }
+
+.margin-top {
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.7rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+}
+

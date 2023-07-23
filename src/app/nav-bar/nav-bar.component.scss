@@ -1,11 +1,25 @@
-.active {
-  background-color: #fcfcfc;
-  $radius: 20px;
-  border-top-left-radius: $radius;
-  border-top-right-radius: $radius;
-  position: relative;
-  bottom: -9px;
+@import "mixins";
+
+mat-toolbar {
+  width: 100%;
+  height: fit-content;
+  gap: 10px;
+  padding: 0.5em;
+
+
+  span {
+    flex: 1;
+    @include dark-blue;
+  }
 }
-.nav-button {
-  width: fit-content;
+
+mat-toolbar span {
+  font-size: 2.5rem; /* Default font size for larger screens */
+}
+
+/* Adjust the font size for smaller screens */
+@media screen and (max-width: 767px) {
+  mat-toolbar span {
+    font-size: 2rem;
+  }
 }

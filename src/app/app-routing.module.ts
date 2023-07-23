@@ -5,6 +5,7 @@ import { AuthGuard } from '../shared-components/ng-login/auth/auth-guard.service
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
+import {LandingPageComponent} from "./landing-page/landing-page.component";
 
 const routes: Routes = [
   {
@@ -26,8 +27,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: '/home',
+    component: LandingPageComponent,
   },
   {
     path: '**',

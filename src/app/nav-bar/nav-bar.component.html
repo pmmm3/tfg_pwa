@@ -1,43 +1,16 @@
-<mat-toolbar
-  fxLayout="row"
-  fxLayoutAlign="space-between center"
->
-  <span fxFlexOffset="10" routerLink="/">PsicoSalud</span>
-  <div
-    fxHide.lt-md
-    fxFlexOffset="10"
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-    fxLayoutGap="20"
-  >
-    <button
-      *ngFor="let link of links"
-      class="nav-button"
-      mat-menu-item
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [routerLink]="link.route"
-      [ngClass]="{ active: link.route === currentRoute }"
-    >
-      <span>{{ link.label }}</span>
-    </button>
+<mat-toolbar fxLayout="row">
+  <img ngSrc="assets/imgs/logo.svg" alt="Logo" height="55" width="55">
+  <span>PsicoSalud</span>
+  <div fxShow fxHide.lt-sm>
+    <button mat-raised-button color="primary" routerLink="/login">Iniciar Sesión</button>
   </div>
-  <div fxHide.gt-sm>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>menu</mat-icon>
+  <div fxHide fxShow.lt-sm>
+    <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" aria-label="icon button with a home icon">
+      <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button
-        *ngFor="let link of links"
-        mat-menu-item
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        [routerLink]="link.route"
-      >
-        <!-- TODO: Selected route with primary color -->
-        <mat-icon>{{ link.icon }}</mat-icon>
-        <span>{{ link.label }}</span>
-      </button>
+      <button mat-menu-item routerLink="/login">Iniciar Sesión</button>
     </mat-menu>
   </div>
+
 </mat-toolbar>

@@ -1,33 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
 })
-export class NavBarComponent implements OnInit {
-  currentRoute = '';
-  links = [
-    {
-      label: 'Cuestionarios',
-      icon: 'assignment',
-      route: '/forms',
-    },
-    {
-      label: 'Cuenta',
-      icon: 'person',
-      route: '/profile',
-    },
-  ];
+export class NavBarComponent {
 
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.currentRoute = event.url;
-      }
-    });
-  }
 }
