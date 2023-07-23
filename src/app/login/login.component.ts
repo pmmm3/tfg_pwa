@@ -12,4 +12,5 @@ export class LoginComponent {
   redirect($event: any) {
     this.router.navigate(['/home']).then();
   }
+
 }

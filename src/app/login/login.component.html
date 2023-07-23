@@ -1,7 +1,21 @@
 <mat-card class="login gap">
-  <img src="assets/imgs/logo.svg" alt="Logo" />
-  <h2> Iniciar sesión </h2>
-  <ng-login (logged)="redirect($event)"></ng-login>
-  <a mat-flat-button [routerLink]="['/register']"> ¿No tienes cuenta? </a>
+  <button class="card__back_button" mat-icon-button color="primary" aria-label="Back button" routerLink="..">
+    <mat-icon>arrow_back_ios_new</mat-icon>
+  </button>
+  <img ngSrc="assets/imgs/logo.svg" alt="Logo" height="120" width="100"/>
+  <h2> Entrar como </h2>
+  <div class="choose_login">
+    <mat-card class="choose_login__admin" fxLayout="column" fxLayoutAlign="center center" routerLink="./doctor">
+      <mat-icon aria-hidden="false" aria-label="Doctor" fontIcon="admin_panel_settings"></mat-icon>
+      <span>Doctor</span>
+    </mat-card>
+    <mat-card class="choose_login__patient" fxLayout="column" fxLayoutAlign="center center"  routerLink="./patient">
+      <mat-icon aria-hidden="false" aria-label="Paciente" fontIcon="person"></mat-icon>
+      <span>Paciente</span>
+    </mat-card>
+  </div>
+
+  <!--  <ng-login (logged)="redirect($event)"></ng-login>-->
+  <!--  <a mat-flat-button [routerLink]="['/register']"> ¿No tienes cuenta? </a>-->
 
 </mat-card>

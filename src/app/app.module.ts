@@ -34,6 +34,8 @@ import { ActivateAccountComponent } from './activate-account/activate-account.co
 import { InfoDialogComponent } from './info-dialog/info-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import {RouterLink} from "@angular/router";
+import { LoginSpecificComponent } from './login/login-specific/login-specific.component';
 
 @NgModule({
   declarations: [
@@ -45,46 +47,48 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     ActivateAccountComponent,
     InfoDialogComponent,
     LandingPageComponent,
+    LoginSpecificComponent,
   ],
-  imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-    }),
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
-    }),
-    ReactiveFormsModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    FlexLayoutModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-      defaultLanguage: 'es',
-    }),
-    LoginModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    NgOptimizedImage,
-    MatMenuModule,
-    MatRippleModule,
-    MatListModule,
-    MatExpansionModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+        }),
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }),
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        FlexLayoutModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+            defaultLanguage: 'es',
+        }),
+        LoginModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        NgOptimizedImage,
+        MatMenuModule,
+        MatRippleModule,
+        MatListModule,
+        MatExpansionModule,
+        MatDialogModule,
+        RouterLink
+    ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
