@@ -24,7 +24,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="field_pwd">
       <mat-label>{{ 'LoginComponent.Password' | translate }}</mat-label>
       <input
         matInput
@@ -38,6 +38,9 @@
         {{ 'LoginComponent.Field-required' | translate }}
       </mat-error>
     </mat-form-field>
+    <div fxLayoutAlign="end center">
+      <a class="forgot-password" mat-flat-button [routerLink]="['/forgot-password']"> ¿Has olvidado la contraseña?</a>
+    </div>
 
     <span fxFlexAlign="center">
       <button

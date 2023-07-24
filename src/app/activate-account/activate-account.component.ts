@@ -5,6 +5,7 @@ import jwt_decode from 'jwt-decode';
 import { UserService } from '../../services/user.service';
 import {MatDialog} from "@angular/material/dialog";
 import {InfoDialogComponent} from "../info-dialog/info-dialog.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 interface DecodedToken {
   email: string;
@@ -26,6 +27,7 @@ export class ActivateAccountComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
+    private _snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {
     this.form = this.fb.group({
@@ -45,7 +47,15 @@ export class ActivateAccountComponent implements OnInit {
         name: this.form.get('name')?.value,
         last_name: this.form.get('lastname')?.value,
       };
-      this.userService.activateAccount(data).subscribe();
+      this.userService.activateAccount(data).subscribe(
+        (_) => {
+          this._snackBar.open('Cuenta activada con éxito', 'OK');
+          this.router.navigate(['login']);
+        },
+        (error) => {
+          this._snackBar.open('Error al activar la cuenta', 'OK');
+        }
+      );
     } else {
       this.form.markAllAsTouched();
     }

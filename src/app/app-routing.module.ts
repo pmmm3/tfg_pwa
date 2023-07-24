@@ -16,7 +16,6 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
     children: [
       {
         path: 'doctor',
@@ -25,6 +24,10 @@ const routes: Routes = [
       {
         path: 'patient',
         component: LoginSpecificComponent,
+      },
+      {
+        path: '**',
+        component: LoginComponent,
       }
 
     ]
