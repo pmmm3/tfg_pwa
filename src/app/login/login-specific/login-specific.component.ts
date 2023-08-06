@@ -7,13 +7,22 @@ import {Router} from "@angular/router";
   styleUrls: ['./login-specific.component.scss']
 })
 export class LoginSpecificComponent {
-  view : 'doctor' | 'patient';
+  view: 'doctor' | 'patient';
+
   constructor(private router: Router) {
     this.view = router.url.split('/')[2] as 'doctor' | 'patient';
   }
 
   redirect() {
-    this.router.navigate(['/home']).then();
+    const routeMap = {
+      'doctor': '/dashboard',
+      'patient': '/home'
+    };
+
+    const defaultRoute = '/home';
+    const targetRoute = routeMap[this.view] || defaultRoute;
+
+    this.router.navigate([targetRoute]).then();
   }
 }
 

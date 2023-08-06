@@ -1,8 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './auth/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { skip } from 'rxjs/operators';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from './auth/auth.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {skip} from 'rxjs/operators';
+import {UserService} from "../../services/user.service";
 
 /**
  * Selector, template-form and styles for login component
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
    * Login form
    */
   public loginForm: FormGroup;
+  @Input() type: 'doctor' | 'patient' = 'patient';
 
   /**
    * Event emitter that will trigger an event when the login  is correct.
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
   /**
    * Component constructor
    */
-  constructor(private authService: AuthService, public snackBar: MatSnackBar) {
+  constructor(private authService: AuthService, public snackBar: MatSnackBar, private userService: UserService) {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
@@ -55,20 +57,43 @@ export class LoginComponent implements OnInit {
   public login(): void {
     this.authService
       .login(this.loginForm.value)
-      .pipe(skip(1)) // initialization
+      .pipe(skip(1))
       .subscribe((accessToken) => {
         if (accessToken) {
           if (accessToken === 'true') {
             this.snackBar.open(
               'The account is locked, an admin has to accept your account. Try again later.',
               '',
-              {
-                duration: 3000,
-              }
+              { duration: 3000 }
             );
           } else {
-            this.logged.emit(this.authService.redirectUrl);
-            this.authService.redirectUrl = null;
+            if (this.type === 'doctor') {
+              this.userService.checkDoctorOrAdmin().subscribe((isDoctor) => {
+                if (isDoctor) {
+                  this.logged.emit(this.authService.redirectUrl);
+                  this.authService.redirectUrl = null;
+                } else {
+                  this.snackBar.open(
+                    'You are not a doctor or admin',
+                    '',
+                    { duration: 3000 }
+                  );
+                }
+              });
+            } else if (this.type === 'patient') {
+              this.userService.isPatient().subscribe((isPatient) => {
+                if (isPatient) {
+                  this.logged.emit(this.authService.redirectUrl);
+                  this.authService.redirectUrl = null;
+                } else {
+                  this.snackBar.open(
+                    'You are not a patient',
+                    '',
+                    { duration: 3000 }
+                  );
+                }
+              });
+            }
           }
         } else {
           this.snackBar.open('Credenciales incorrectas', '', {
