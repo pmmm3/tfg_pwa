@@ -26,10 +26,20 @@ p {
   margin-top: 2em;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .background-img {
     margin: 2em;
     background-size: 45%;
+  }
+  p {
+    font-size: 1.3em;
+    max-width: 500px;
+  }
+}
+@media screen and (min-width: 700px) {
+  .background-img {
+    margin: 2em;
+    background-size: contain;
   }
   p {
     font-size: 1.3em;

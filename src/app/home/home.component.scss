@@ -13,12 +13,19 @@
   background-position: bottom right;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .background-img {
     margin: 2em;
-    background-size: 45%;
+    background-size: 50%;
   }
 }
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .background-img {
+    margin: 2em;
+    background-size: contain;
+  }
+}
+
 
 @media screen and (max-height: 500px) {
   .background-img {
