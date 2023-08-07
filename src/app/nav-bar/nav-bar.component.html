@@ -1,7 +1,7 @@
 <mat-toolbar fxLayout="row">
   <img ngSrc="assets/imgs/logo.svg" alt="Logo" height="55" width="55">
   <span>PsicoSalud</span>
-  <div fxShow fxHide.lt-sm>
+  <div fxShow fxHide.lt-sm *ngIf="!isLoggedIn">
     <button mat-raised-button color="primary" routerLink="/login">Iniciar Sesión</button>
   </div>
   <div fxHide fxShow.lt-sm>
@@ -9,7 +9,7 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/login">Iniciar Sesión</button>
+      <button mat-menu-item routerLink="/login" *ngIf="!isLoggedIn">Iniciar Sesión</button>
     </mat-menu>
   </div>
 
