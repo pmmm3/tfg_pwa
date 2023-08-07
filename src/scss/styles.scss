@@ -40,17 +40,20 @@ h2 {
 .margin-top {
   margin-top: 2rem;
 }
-.card__back_button{
+
+.card__back_button {
   font-size: 1.5em !important;
   width: fit-content;
   height: auto;
   position: absolute !important;
   top: 10px;
   left: 10px;
+
   * {
     font-size: unset !important;
   }
 }
+
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 1.7rem;
