@@ -36,6 +36,9 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {RouterLink} from "@angular/router";
 import { LoginSpecificComponent } from './login/login-specific/login-specific.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import { LoginSpecificComponent } from './login/login-specific/login-specific.co
     InfoDialogComponent,
     LandingPageComponent,
     LoginSpecificComponent,
+    DashboardComponent,
   ],
     imports: [
         BrowserModule,
@@ -87,7 +91,9 @@ import { LoginSpecificComponent } from './login/login-specific/login-specific.co
         MatListModule,
         MatExpansionModule,
         MatDialogModule,
-        RouterLink
+        RouterLink,
+        MatTableModule,
+        MatPaginatorModule
     ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

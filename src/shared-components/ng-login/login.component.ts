@@ -4,6 +4,7 @@ import {AuthService} from './auth/auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {skip} from 'rxjs/operators';
 import {UserService} from "../../services/user.service";
+import {removeStorageObject} from "../../utils/storage-manager";
 
 /**
  * Selector, template-form and styles for login component
@@ -78,6 +79,7 @@ export class LoginComponent implements OnInit {
                     '',
                     { duration: 3000 }
                   );
+                  removeStorageObject('access_token');
                 }
               });
             } else if (this.type === 'patient') {
@@ -91,6 +93,7 @@ export class LoginComponent implements OnInit {
                     '',
                     { duration: 3000 }
                   );
+                  removeStorageObject('access_token');
                 }
               });
             }

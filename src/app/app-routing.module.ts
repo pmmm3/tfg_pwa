@@ -7,12 +7,18 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {ActivateAccountComponent} from './activate-account/activate-account.component';
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {LoginSpecificComponent} from "./login/login-specific/login-specific.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 const routes: Routes = [
   {
     path: 'home',
     canActivate: [AuthGuard],
     component: HomeComponent,
+  },
+  {
+    path: 'dashboard',
+    canActivate: [AuthGuard],
+    component: DashboardComponent,
   },
   {
     path: 'login',

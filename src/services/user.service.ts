@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {HttpClient} from '@angular/common/http';
-import {ActivateUser, User} from '../models/user';
+import {ActivateUser, User, UserList} from '../models/user';
 import {forkJoin, Observable, of} from 'rxjs';
-import {Deserialize, IJsonObject} from 'dcerialize';
+import {Deserialize, DeserializeJSON, IJsonObject, Serialize, SerializeArray} from 'dcerialize';
 import {catchError, map} from 'rxjs/operators';
+import {ListParams} from "../utils/table";
 
 @Injectable({
   providedIn: 'root',
@@ -65,6 +66,25 @@ export class UserService {
       this.isAdministrator()
     ]).pipe(
       map(([isDoctor, isAdministrator]) => isDoctor || isAdministrator)
+    );
+  }
+
+  list(params: ListParams = {}): Observable<UserList> {
+    return this.http.post<IJsonObject>(this.path + '/list', Serialize(params, () => ListParams)).pipe(
+      map((data) => Deserialize(data, () => UserList)),
+      catchError((error) => {
+          throw error;
+        }
+      )
+    );
+  }
+
+  delete(email: string): Observable<string> {
+    return this.http.delete<IJsonObject>(`${this.path}/${email}`).pipe(
+      map(data => data['message'] as string || 'Error deleting user'),
+      catchError((error) => {
+        throw error;
+      })
     );
   }
 }

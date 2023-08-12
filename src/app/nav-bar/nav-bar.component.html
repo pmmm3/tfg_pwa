@@ -2,14 +2,29 @@
   <img ngSrc="assets/imgs/logo.svg" alt="Logo" height="55" width="55">
   <span>PsicoSalud</span>
   <div fxShow fxHide.lt-sm>
-    <button mat-raised-button color="primary" routerLink="/login">Iniciar Sesión</button>
+    <button mat-raised-button color="primary" routerLink="/login" *ngIf="!isLoggedIn">Iniciar Sesión</button>
+    <button mat-icon-button color="primary" *ngIf="isLoggedIn" [matMenuTriggerFor]="menu2" aria-label="icon button with a person icon">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item routerLink="/login" *ngIf="isLoggedIn" (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+
   </div>
   <div fxHide fxShow.lt-sm>
     <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" aria-label="icon button with a home icon">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/login">Iniciar Sesión</button>
+      <button mat-menu-item routerLink="/login" *ngIf="!isLoggedIn">Iniciar Sesión</button>
+
+      <button mat-menu-item routerLink="/login" *ngIf="isLoggedIn" (click)="logOut()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
     </mat-menu>
   </div>
 
