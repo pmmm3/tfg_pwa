@@ -1,3 +1,13 @@
 table{
   width: 100%;
 }
+.table__user{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
+
+  td{
+    max-width: 5rem;
+  }
+}

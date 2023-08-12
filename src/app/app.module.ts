@@ -38,6 +38,7 @@ import {RouterLink} from "@angular/router";
 import { LoginSpecificComponent } from './login/login-specific/login-specific.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -52,47 +53,48 @@ import {MatTableModule} from "@angular/material/table";
     LoginSpecificComponent,
     DashboardComponent,
   ],
-  imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-    }),
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
-    }),
-    ReactiveFormsModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    FlexLayoutModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-      defaultLanguage: 'es',
-    }),
-    LoginModule,
-    MatDividerModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    NgOptimizedImage,
-    MatMenuModule,
-    MatRippleModule,
-    MatListModule,
-    MatExpansionModule,
-    MatDialogModule,
-    RouterLink,
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+        }),
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }),
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        FlexLayoutModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+            defaultLanguage: 'es',
+        }),
+        LoginModule,
+        MatDividerModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        NgOptimizedImage,
+        MatMenuModule,
+        MatRippleModule,
+        MatListModule,
+        MatExpansionModule,
+        MatDialogModule,
+        RouterLink,
+        MatTableModule,
+        MatPaginatorModule
+    ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
