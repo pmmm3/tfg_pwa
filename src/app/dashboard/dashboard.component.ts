@@ -26,9 +26,15 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   getUsers() {
-    this.userService.list({}).subscribe((data) => {
-      this.dataSource.data = data.users;
+    this.userService.isAdministrator().subscribe((data) => {
+      if (data) {
+        console.log("es admin")
+        this.userService.list({}).subscribe((data) => {
+          this.dataSource.data = data.users;
+        });
+      }
     });
+
   }
 
   applyFilter(event: Event) {

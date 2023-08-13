@@ -14,7 +14,6 @@ export class NavBarComponent {
 
   constructor() {
     this.isLoggedIn = !!getStorageObject('access_token');
-    console.log(this.isLoggedIn);
   }
   logOut() {
     removeStorageObject('access_token');

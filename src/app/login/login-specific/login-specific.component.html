@@ -2,7 +2,7 @@
   <button class="card__back_button" mat-icon-button color="primary" aria-label="Back button" routerLink="..">
     <mat-icon>arrow_back_ios_new</mat-icon>
   </button>
-  <img ngSrc="assets/imgs/logo.svg" alt="Logo" height="120" width="100"/>
+  <img priority ngSrc="assets/imgs/logo.svg" alt="Logo" height="120" width="100"/>
   <h2> Entrar como </h2>
 
   <ng-login (logged)="redirect()" [type]="view"></ng-login>

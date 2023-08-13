@@ -8,6 +8,7 @@ import {ActivateAccountComponent} from './activate-account/activate-account.comp
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {LoginSpecificComponent} from "./login/login-specific/login-specific.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {adminOrDoctorGuard} from "./admin-or-doctor.guard";
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    canActivate: [AuthGuard],
+    canActivate: [adminOrDoctorGuard, AuthGuard],
     component: DashboardComponent,
   },
   {
