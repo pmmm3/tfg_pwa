@@ -1,5 +1,8 @@
 <mat-card class="login gap">
-  <img src="assets/imgs/logo.svg" alt="Logo" />
+  <button class="card__back_button" mat-icon-button color="primary" aria-label="Back button" routerLink="..">
+    <mat-icon>arrow_back_ios_new</mat-icon>
+  </button>
+  <img src="assets/imgs/logo.svg" alt="Logo"/>
   <form
     [formGroup]="form"
     (ngSubmit)="isRegistering ? submitRegister() : submitActivate()"
@@ -13,15 +16,15 @@
     <section fxLayout="column">
       <mat-form-field>
         <mat-label>Correo</mat-label>
-        <input matInput placeholder="Correo" formControlName="email" />
+        <input matInput placeholder="Correo" formControlName="email"/>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Nombre" formControlName="name" />
+        <input matInput placeholder="Nombre" formControlName="name"/>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Apellido</mat-label>
-        <input matInput placeholder="Apellidos" formControlName="lastname" />
+        <input matInput placeholder="Apellidos" formControlName="lastname"/>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Contraseña</mat-label>
@@ -40,10 +43,11 @@
         >
           <mat-icon>{{
             showPassword ? 'visibility_off' : 'visibility'
-          }}</mat-icon>
+            }}</mat-icon>
         </button>
         <mat-error *ngIf="isFieldInvalid('password')"
-          >La contraseña es requerida</mat-error
+        >La contraseña es requerida
+        </mat-error
         >
       </mat-form-field>
     </section>
