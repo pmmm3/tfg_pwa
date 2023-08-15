@@ -45,12 +45,27 @@
             showPassword ? 'visibility_off' : 'visibility'
             }}</mat-icon>
         </button>
-        <mat-error *ngIf="isFieldInvalid('password')"
-        >La contraseña es requerida
-        </mat-error
-        >
+        <mat-error *ngIf="isFieldInvalid('password')">
+          La contraseña es requerida
+        </mat-error>
       </mat-form-field>
+      <!--      Repeat password-->
+      <mat-form-field>
+        <mat-label>Repetir contraseña</mat-label>
+        <input
+          matInput
+          placeholder="Repetir contraseña"
+          formControlName="repeatPassword"
+          type="password"
+        />
+        <div>
+        </div>
+      </mat-form-field>
+      <span class="error" *ngIf="form.hasError('mismatchedPasswords') && form.get('repeatPassword')?.touched">
+      Las contraseñas no coinciden.
+    </span>
     </section>
+    
     <button mat-raised-button type="submit" [disabled]="form.invalid">
       {{ isRegistering ? 'Registrarse' : 'Activar cuenta'}}
     </button>

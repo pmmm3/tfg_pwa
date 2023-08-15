@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {HttpClient} from '@angular/common/http';
 import {ActivateUser, User, UserList} from '../models/user';
-import {forkJoin, Observable, of} from 'rxjs';
+import {EMPTY, forkJoin, Observable, of} from 'rxjs';
 import {Deserialize, DeserializeJSON, IJsonObject, Serialize, SerializeArray} from 'dcerialize';
 import {catchError, map} from 'rxjs/operators';
 import {ListParams} from "../utils/table";
@@ -28,8 +28,8 @@ export class UserService {
   activateAccount(info: ActivateUser): Observable<User> {
     return this.http.post<IJsonObject>(this.path + '/activate', info).pipe(
       map((data) => Deserialize(data, () => User)),
-      catchError((error) => {
-        throw error;
+      catchError(() => {
+        return EMPTY;
       })
     );
   }
@@ -72,8 +72,8 @@ export class UserService {
   list(params: ListParams = {}): Observable<UserList> {
     return this.http.post<IJsonObject>(this.path + '/list', Serialize(params, () => ListParams)).pipe(
       map((data) => Deserialize(data, () => UserList)),
-      catchError((error) => {
-          throw error;
+      catchError(() => {
+          return EMPTY;
         }
       )
     );
@@ -82,9 +82,18 @@ export class UserService {
   delete(email: string): Observable<string> {
     return this.http.delete<IJsonObject>(`${this.path}/${email}`).pipe(
       map(data => data['message'] as string || 'Error deleting user'),
-      catchError((error) => {
-        throw error;
+      catchError(() => {
+        return EMPTY;
       })
     );
+  }
+
+  register(data: { password: any; name: any; last_name: any }) {
+    return this.http.post(this.path + '/request-activate', data).pipe(
+      catchError(() => {
+          return EMPTY;
+        }
+      ));
+
   }
 }

@@ -4,7 +4,10 @@
   align-items: center;
   height: 100%;
 }
-
+.error{
+  color: red;
+  font-weight: bold;
+}
 .login {
   display: flex;
   flex-direction: column;

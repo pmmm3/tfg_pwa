@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import jwt_decode from 'jwt-decode';
-import { UserService } from '../../services/user.service';
+import {UserService} from '../../services/user.service';
 import {MatDialog} from "@angular/material/dialog";
 import {InfoDialogComponent} from "../info-dialog/info-dialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -35,7 +35,8 @@ export class ActivateAccountComponent implements OnInit {
       lastname: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-    });
+      repeatPassword: ['', [Validators.required]],
+    }, {validators: ConfirmPasswordValidator()});
   }
 
   submitActivate() {
@@ -60,8 +61,28 @@ export class ActivateAccountComponent implements OnInit {
       this.form.markAllAsTouched();
     }
   }
+
   submitRegister() {
-    console.log(this.form.value);
+    if (this.form.valid) {
+      const data = {
+        email: this.form.get('email')?.value,
+        password: this.form.get('password')?.value,
+        name: this.form.get('name')?.value,
+        last_name: this.form.get('lastname')?.value,
+      };
+      this.userService.register(data).subscribe({
+          next: () => {
+            this._snackBar.open('Registro solicitado con éxito', 'OK');
+            this.router.navigate(['login']);
+          },
+          error: (error) => {
+            this._snackBar.open('Error al solicitar el registro:\n'+error.error.detail, 'OK');
+          }
+        }
+      );
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
   togglePasswordVisibility() {
@@ -90,8 +111,7 @@ export class ActivateAccountComponent implements OnInit {
           cancelText: null,
         }
       })
-    }
-    else {
+    } else {
       // Set email value on form and disable it
       // Decode the token and cast the result to the DecodedToken interface
       const decodedToken = jwt_decode(this.token) as DecodedToken;
@@ -101,4 +121,15 @@ export class ActivateAccountComponent implements OnInit {
       this.form.get('email')?.disable();
     }
   }
+}
+
+export function ConfirmPasswordValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: boolean } | null => {
+    const password = control.get('password');
+    const repeatPassword = control.get('repeatPassword');
+    if (password && repeatPassword && password.value !== repeatPassword.value) {
+      return {'mismatchedPasswords': true};
+    }
+    return null;
+  };
 }
