@@ -6,7 +6,6 @@
   <h2> Entrar como </h2>
 
   <ng-login (logged)="redirect()" [type]="view"></ng-login>
-  <!--  TODO: Add back button in register-->
   <a *ngIf="this.view==='doctor'" mat-flat-button [routerLink]="['/register']"> ¿No tienes cuenta? </a>
 
 </mat-card>

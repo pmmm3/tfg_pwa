@@ -3,12 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from '../shared-components/ng-login/auth/auth-guard.service';
 import {HomeComponent} from './home/home.component';
-import {NotFoundComponent} from './not-found/not-found.component';
+import {NotFoundComponent} from '../shared-components/not-found/not-found.component';
 import {ActivateAccountComponent} from './activate-account/activate-account.component';
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {LoginSpecificComponent} from "./login/login-specific/login-specific.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {adminOrDoctorGuard} from "./admin-or-doctor.guard";
+import {ForgotPasswordComponent} from "../shared-components/forgot-password/forgot-password.component";
 
 const routes: Routes = [
   {
@@ -37,6 +38,19 @@ const routes: Routes = [
         component: LoginComponent,
       }
 
+    ]
+  },
+  {
+    path: 'forgot-password',
+    children: [
+      {
+        path: 'reset',
+        component: ForgotPasswordComponent,
+      },
+      {
+        path:'',
+        component: ForgotPasswordComponent,
+      },
     ]
   },
   {

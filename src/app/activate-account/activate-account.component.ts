@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import {UserService} from '../../services/user.service';
 import {MatDialog} from "@angular/material/dialog";
 import {InfoDialogComponent} from "../info-dialog/info-dialog.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ConfirmPasswordValidator} from "../../utils/custom-validators";
 
 interface DecodedToken {
   email: string;
@@ -123,13 +124,3 @@ export class ActivateAccountComponent implements OnInit {
   }
 }
 
-export function ConfirmPasswordValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: boolean } | null => {
-    const password = control.get('password');
-    const repeatPassword = control.get('repeatPassword');
-    if (password && repeatPassword && password.value !== repeatPassword.value) {
-      return {'mismatchedPasswords': true};
-    }
-    return null;
-  };
-}

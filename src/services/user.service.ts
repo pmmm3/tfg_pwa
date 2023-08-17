@@ -96,4 +96,20 @@ export class UserService {
       ));
 
   }
+
+  forgotPassword(data: { email: string }) {
+    return this.http.post(this.path + '/forgot-password', data).pipe(
+      catchError(() => {
+          return EMPTY;
+        }
+      ));
+  }
+
+  changePassword(password: string, s: string) {
+    return this.http.post(this.path + '/change-password', {password: password, token: s}).pipe(
+      catchError(() => {
+        return EMPTY;
+      }));
+  }
 }
+

@@ -18,14 +18,14 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { environment } from '../environments/environment';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from '../shared-components/not-found/not-found.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { AuthGuard } from '../shared-components/ng-login/auth/auth-guard.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgOptimizedImage } from '@angular/common';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from '../shared-components/nav-bar/nav-bar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
@@ -39,6 +39,7 @@ import { LoginSpecificComponent } from './login/login-specific/login-specific.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { ForgotPasswordComponent } from '../shared-components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     LandingPageComponent,
     LoginSpecificComponent,
     DashboardComponent,
+    ForgotPasswordComponent,
   ],
     imports: [
         BrowserModule,
