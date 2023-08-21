@@ -40,6 +40,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { ForgotPasswordComponent } from '../shared-components/forgot-password/forgot-password.component';
+import { ConsentimientoComponent } from './consentimiento-texto/consentimiento.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ForgotPasswordComponent } from '../shared-components/forgot-password/fo
     LoginSpecificComponent,
     DashboardComponent,
     ForgotPasswordComponent,
+    ConsentimientoComponent,
   ],
     imports: [
         BrowserModule,
