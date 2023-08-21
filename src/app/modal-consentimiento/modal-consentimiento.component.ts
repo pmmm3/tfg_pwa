@@ -21,6 +21,7 @@ export class ModalConsentimientoComponent {
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
     this.formConsentimiento = this._formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      lastname: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
       dni: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
     });
   }
