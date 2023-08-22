@@ -2,7 +2,7 @@
   <mat-step [completed]="checked">
     <ng-template matStepLabel>Consentimiento</ng-template>
     <ng-template matStepContent>
-      <div fxLayout="column">
+      <div fxLayout="column" class="customStepper">
         <app-consentimiento-text/>
         <br>
         <mat-checkbox [color]="'primary'" [(ngModel)]="checked">Al marcar esta casilla, confirmo que he leído y
@@ -10,17 +10,16 @@
         </mat-checkbox>
         <br>
         <section fxFlexAlign="end" fxLayoutGap="10">
-          <!--          TODO: Cerrar modal-->
-          <button mat-button>Cerrar</button>
+          <button mat-button mat-dialog-close>Cerrar</button>
           <button mat-raised-button color="primary" matStepperNext [disabled]="!checked">Siguiente</button>
         </section>
       </div>
     </ng-template>
   </mat-step>
-  <mat-step>
+  <mat-step >
     <ng-template matStepLabel>Datos</ng-template>
     <ng-template matStepContent>
-      <div fxLayout="column">
+      <div fxLayout="column" class="customStepper">
         <form
           [formGroup]="formConsentimiento"
           fxLayout="column"
@@ -41,8 +40,7 @@
           </mat-form-field>
         </form>
         <section fxFlexAlign="end" fxLayoutGap="10">
-          <!--          TODO: Cerrar modal-->
-          <button mat-button>Cerrar</button>
+          <button mat-button  mat-dialog-close>Cerrar</button>
           <button mat-raised-button color="primary" (click)="submitConsentimiento()"
                   [disabled]="!checked || formConsentimiento.invalid">
             Siguiente
