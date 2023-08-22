@@ -23,7 +23,6 @@
       <div fxLayout="column">
         <form
           [formGroup]="formConsentimiento"
-          (ngSubmit)="submitConsentimiento()"
           fxLayout="column"
           fxLayoutGap="20"
           class="datos-form"
@@ -34,7 +33,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Apellidos</mat-label>
-            <input matInput formControlName="lastName"/>
+            <input matInput formControlName="last_name"/>
           </mat-form-field>
           <mat-form-field>
             <mat-label>DNI</mat-label>
@@ -44,7 +43,7 @@
         <section fxFlexAlign="end" fxLayoutGap="10">
           <!--          TODO: Cerrar modal-->
           <button mat-button>Cerrar</button>
-          <button mat-raised-button color="primary" matStepperNext
+          <button mat-raised-button color="primary" (click)="submitConsentimiento()"
                   [disabled]="!checked || formConsentimiento.invalid">
             Siguiente
           </button>
