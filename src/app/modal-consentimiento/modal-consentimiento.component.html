@@ -1,0 +1,52 @@
+<mat-stepper [orientation]="(stepperOrientation | async)!" labelPosition="bottom" [linear]="true">
+  <mat-step [completed]="checked">
+    <ng-template matStepLabel>Consentimiento</ng-template>
+    <ng-template matStepContent>
+      <div fxLayout="column" class="customStepper">
+        <app-consentimiento-text/>
+        <br>
+        <mat-checkbox [color]="'primary'" [(ngModel)]="checked">Al marcar esta casilla, confirmo que he leído y
+          comprendido la información proporcionada y doy mi consentimiento para el tratamiento médico.
+        </mat-checkbox>
+        <br>
+        <section fxFlexAlign="end" fxLayoutGap="10">
+          <button mat-button mat-dialog-close>Cerrar</button>
+          <button mat-raised-button color="primary" matStepperNext [disabled]="!checked">Siguiente</button>
+        </section>
+      </div>
+    </ng-template>
+  </mat-step>
+  <mat-step >
+    <ng-template matStepLabel>Datos</ng-template>
+    <ng-template matStepContent>
+      <div fxLayout="column" class="customStepper">
+        <form
+          [formGroup]="formConsentimiento"
+          fxLayout="column"
+          fxLayoutGap="20"
+          class="datos-form"
+        >
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Apellidos</mat-label>
+            <input matInput formControlName="last_name"/>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>DNI</mat-label>
+            <input matInput formControlName="dni"/>
+          </mat-form-field>
+        </form>
+        <section fxFlexAlign="end" fxLayoutGap="10">
+          <button mat-button  mat-dialog-close>Cerrar</button>
+          <button mat-raised-button color="primary" (click)="submitConsentimiento()"
+                  [disabled]="!checked || formConsentimiento.invalid">
+            Siguiente
+          </button>
+        </section>
+      </div>
+    </ng-template>
+  </mat-step>
+</mat-stepper>

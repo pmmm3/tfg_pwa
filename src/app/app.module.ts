@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoginComponent } from './login/login.component';
 import { MatCardModule } from '@angular/material/card';
@@ -40,6 +40,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { ForgotPasswordComponent } from '../shared-components/forgot-password/forgot-password.component';
+import { ConsentimientoComponent } from './modal-consentimiento/consentimiento-texto/consentimiento.component';
+import { ModalConsentimientoComponent } from './modal-consentimiento/modal-consentimiento.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -54,49 +57,53 @@ import { ForgotPasswordComponent } from '../shared-components/forgot-password/fo
     LoginSpecificComponent,
     DashboardComponent,
     ForgotPasswordComponent,
+    ConsentimientoComponent,
+    ModalConsentimientoComponent,
   ],
-    imports: [
-        BrowserModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production,
-        }),
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000',
-        }),
-        ReactiveFormsModule,
-        MatCheckboxModule,
-        MatCardModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-        FlexLayoutModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: createTranslateLoader,
-                deps: [HttpClient],
-            },
-            defaultLanguage: 'es',
-        }),
-        LoginModule,
-        MatDividerModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        NgOptimizedImage,
-        MatMenuModule,
-        MatRippleModule,
-        MatListModule,
-        MatExpansionModule,
-        MatDialogModule,
-        RouterLink,
-        MatTableModule,
-        MatPaginatorModule
-    ],
+  imports: [
+    BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'es',
+    }),
+    LoginModule,
+    MatDividerModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    NgOptimizedImage,
+    MatMenuModule,
+    MatRippleModule,
+    MatListModule,
+    MatExpansionModule,
+    MatDialogModule,
+    RouterLink,
+    MatTableModule,
+    MatPaginatorModule,
+    MatStepperModule,
+    FormsModule
+  ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })

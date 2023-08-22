@@ -85,6 +85,8 @@ export class AuthService {
           if (data.accessToken) {
             const storage = 'session';
             setStorageObject('access_token', data.accessToken, storage);
+            const email = credentials.username;
+            setStorageObject('email', email, storage);
             this.accessToken.next(data.accessToken.toString());
           } else {
             this.accessToken.next('');
@@ -112,6 +114,7 @@ export class AuthService {
    */
   public logout(): void {
     removeStorageObject('access_token');
+    removeStorageObject('email');
     this.userLoggedOut.next(true);
   }
 }
