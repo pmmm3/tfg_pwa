@@ -1,0 +1,28 @@
+.questionnaire {
+  margin-top: 1em; // To show the chip
+  width: fit-content;
+  padding: 1em;
+
+  &__chip {
+    position: absolute;
+    top: -1em;
+    left: 7em;
+
+  }
+
+  &__icon {
+    font-size: 76px;
+    overflow: visible;
+    width: 76px;
+    height: 76px;
+  }
+
+  &__title {
+    width: 8.75em;
+    text-align: center;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
