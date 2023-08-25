@@ -1,13 +1,54 @@
-table{
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
 }
-.table__user{
+
+main {
+  height: 100%;
+  padding: 0 20px 20px;
+  gap: 1em;
+
+  aside {
+    display: flex;
+    margin-top: 4em;
+  }
+
+  @media (max-width: 600px) {
+    aside {
+      margin-top: 0;
+
+      button {
+        .mat-icon {
+          margin-right: 0;
+        }
+      }
+    }
+
+  }
+
+}
+.selected-button {
+  color: #0e7f94!important;
+}
+.logout {
+  position: absolute;
+  bottom: 2em;
+}
+
+
+table {
+  width: 100%;
+}
+
+.table__user {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: auto;
 
-  td{
+  td {
     max-width: 5rem;
   }
 }

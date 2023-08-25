@@ -5,7 +5,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {DocService} from "../../services/doctor.service";
-import {getStorageObject} from "../../utils/storage-manager";
+import {getStorageObject, removeStorageObject} from "../../utils/storage-manager";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +13,12 @@ import {getStorageObject} from "../../utils/storage-manager";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements AfterViewInit {
+  selectedButtonIndex : 'Inicio' | 'Usuarios'  | 'Cuestionarios' | 'Modulos' = 'Inicio';
+
+  selectButton(index : 'Inicio' | 'Usuarios'  | 'Cuestionarios' | 'Modulos'): void {
+    this.selectedButtonIndex = index;
+  }
+
   displayedColumns: string[] = ['email', 'name', 'lastName', 'status', 'rol', 'actions'];
   dataSource = new MatTableDataSource<User>([])
   @ViewChild(MatPaginator) paginator?: MatPaginator;
@@ -62,5 +68,12 @@ export class DashboardComponent implements AfterViewInit {
       this.getUsers();
     });
   }
+
+  logOut() {
+    removeStorageObject('access_token');
+    removeStorageObject('email');
+  }
+
+  protected readonly Date = Date;
 }
 
