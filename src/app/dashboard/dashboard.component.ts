@@ -4,6 +4,8 @@ import {User} from "../../models/user";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {DocService} from "../../services/doctor.service";
+import {getStorageObject} from "../../utils/storage-manager";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +19,7 @@ export class DashboardComponent implements AfterViewInit {
   pageSizeOptions = [1, 2, 3]
 
 
-  constructor(private userService: UserService, private snackBar: MatSnackBar) {
+  constructor(private userService: UserService, private snackBar: MatSnackBar, private docService: DocService) {
     this.getUsers();
   }
 
@@ -31,6 +33,14 @@ export class DashboardComponent implements AfterViewInit {
         console.log("es admin")
         this.userService.list({}).subscribe((data) => {
           this.dataSource.data = data.users;
+        });
+      }
+    });
+    this.userService.isDoctor().subscribe((data) => {
+      if (data) {
+        console.log("es doctor")
+        this.docService.getPatients(getStorageObject('email')).subscribe((data) => {
+          this.dataSource.data = data;
         });
       }
     });
