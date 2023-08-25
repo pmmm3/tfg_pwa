@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from "rxjs";
+import {EMPTY, filter, Observable} from "rxjs";
 import {Patient} from "../models/patient";
-import {Deserialize, IJsonObject} from "dcerialize";
+import {Deserialize, IJsonArray, IJsonObject} from "dcerialize";
 import {map} from "rxjs/operators";
+import {Questionnaire} from "../models/questionnaire";
 
 
 @Injectable({
@@ -37,6 +38,10 @@ export class PatientService {
     );
   }
 
+
+  getAssignments(id: string): Observable<Questionnaire[]> {
+    return this.http.get<Questionnaire[]>(`${this.path}/${id}/questionnaires`);
+  }
 
 }
 

@@ -1,0 +1,17 @@
+<mat-card *ngIf="questionnaire" style="background-color: {{background_color}}" class="questionnaire"
+          matTooltip="{{ questionnaire.description }}">
+
+  <mat-chip *ngIf="chip_text" class="questionnaire__chip" style="background-color: {{chip_color}}">
+    <span style="color: {{icon_color}}"><b>{{ chip_text }}</b></span>
+  </mat-chip>
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Questionnaire icon"
+      fontIcon="pending_actions"
+      class="questionnaire__icon"
+      style="color: {{icon_color}}"
+    ></mat-icon>
+    <span class="questionnaire__title" style="color: {{text_color}}"><b>{{questionnaire.title}}</b></span>
+  </div>
+</mat-card>
