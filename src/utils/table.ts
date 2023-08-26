@@ -1,15 +1,15 @@
-import {autoserializeAs} from "dcerialize";
+import {autoserializeAs, autoserializeAsJson} from "dcerialize";
 
 export class ListParams {
     @autoserializeAs(() => Number) page?: number;
     @autoserializeAs(() => Number, "per_page") perPage?: number;
     @autoserializeAs(() => String) sort?: string;
-    @autoserializeAs(() => Object) filter?: any;
+    @autoserializeAsJson() filters?;
 
 
-    constructor(page?: number, limit?: number, sort?: string, filter?: any) {
+    constructor(page?: number, limit?: number, sort?: string, filters?: any) {
         this.page = page;
         this.sort = sort;
-        this.filter = filter;
+        this.filters = filters;
     }
 }

@@ -51,6 +51,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { TableUsersComponent } from './table-users/table-users.component';
 import { InviteUserComponent } from './invite-user/invite-user.component';
 import { ChipUserStatusComponent } from './chip-user-status/chip-user-status.component';
+import { TableRequestUsersComponent } from './table-request-users/table-request-users.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ChipUserStatusComponent } from './chip-user-status/chip-user-status.com
     TableUsersComponent,
     InviteUserComponent,
     ChipUserStatusComponent,
+    TableRequestUsersComponent,
   ],
   imports: [
     BrowserModule,

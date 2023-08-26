@@ -1,0 +1,46 @@
+.no_data_row {
+  display: flex;
+  flex-direction: column;
+  height: 4em;
+  overflow: hidden;
+
+
+  img {
+    position: relative;
+    overflow: hidden;
+    animation: tumbleweedAnim 5s cubic-bezier(0.18, 0.7, 0.15, 1.19) infinite;
+  }
+}
+
+@keyframes tumbleweedAnim {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(70vw) rotate(720deg);
+  }
+  100% {
+    transform: translateX(0) rotate(1440deg);
+  }
+}
+
+.mat-column-email {
+  max-width: 10rem;
+}
+
+.actions {
+  display: flex;
+  height: inherit;
+  align-items: center;
+  gap: 0.5em;
+
+  @media (max-width: 600px) {
+    button {
+      justify-content: center !important;
+      margin: 0 !important;
+      mat-icon {
+        margin: 0 !important;
+      }
+    }
+  }
+}

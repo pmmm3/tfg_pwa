@@ -31,23 +31,24 @@
 
   <mat-divider fxHide.lt-sm [vertical]="true"></mat-divider>
   <mat-divider fxShow.lt-sm></mat-divider>
-  <section class="main" fxFlex>
+  <section fxFlex class="body">
     <div *ngIf="selectedButtonIndex === 'Usuarios'">
       <app-invite-user></app-invite-user>
       <section *ngIf="rol==='Administrador'">
         <h3>Lista de peticiones</h3>
-        Como Admin, aceptar o rechazar solicitudes de nuevos doctores/admins
-      </section>
 
+        <p>Aceptar o rechazar solicitudes de nuevos doctores/admins</p>
+        <app-table-request-users></app-table-request-users>
+      </section>
+      <br>
       <h3 *ngIf="rol==='Doctor'" [matTooltip]="'Listado de pacientes que se han tratado'">Mis pacientes</h3>
       <h3 *ngIf="rol==='Administrador'">Lista de usuarios</h3>
       <br>
       <app-table-users [rol]="rol"></app-table-users>
-
+      <br>
       <h3 *ngIf="rol==='Doctor'">Buscar usuario</h3>
 
       <mat-divider></mat-divider>
-
 
 
     </div>

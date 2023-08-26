@@ -114,5 +114,10 @@ export class UserService {
   inviteUser(email: string) {
     return this.http.post(this.path + '/send-activate-account', {email: email})
   }
+
+  unlockAdminorDoctor(email: string, rol : string) {
+    return this.http.post(this.path + `/register?role=${rol}`, {email: email})
+  }
+
 }
 
