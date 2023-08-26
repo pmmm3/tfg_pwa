@@ -48,6 +48,9 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from '@angular/material/core';
+import { TableUsersComponent } from './table-users/table-users.component';
+import { InviteUserComponent } from './invite-user/invite-user.component';
+import { ChipUserStatusComponent } from './chip-user-status/chip-user-status.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     ConsentimientoComponent,
     ModalConsentimientoComponent,
     QuestionnaireComponent,
+    TableUsersComponent,
+    InviteUserComponent,
+    ChipUserStatusComponent,
   ],
   imports: [
     BrowserModule,

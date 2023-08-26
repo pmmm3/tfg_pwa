@@ -36,6 +36,14 @@ h2 {
   padding: 0;
   @include dark-blue;
 }
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  @include dark-blue;
+}
 
 .margin-top {
   margin-top: 2rem;

@@ -45,7 +45,6 @@ export class UserService {
   isDoctor(): Observable<boolean> {
     return this.http.get<boolean>(this.path + '/is-doctor').pipe(
       catchError((error) => {
-        console.error('Error in isDoctor:', error);
         return of(false);  // En caso de error, devuelve false
       })
     );
@@ -110,6 +109,10 @@ export class UserService {
       catchError(() => {
         return EMPTY;
       }));
+  }
+
+  inviteUser(email: string) {
+    return this.http.post(this.path + '/send-activate-account', {email: email})
   }
 }
 

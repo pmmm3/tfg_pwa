@@ -1,0 +1,22 @@
+.custom_status_chip{
+  width: fit-content;
+  color: black;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  &--active{
+    @extend .custom_status_chip;
+    background-color: #87ca9e;
+  }
+  &--activated{
+    @extend .custom_status_chip;
+    background-color: #ECCD6A;
+  }
+  &--disabled{
+    @extend .custom_status_chip;
+    background-color:#333333 ;
+    color: white;
+  }
+}
+

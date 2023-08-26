@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {HttpClient} from '@angular/common/http';
-import {EMPTY, filter, Observable} from "rxjs";
-import {Patient} from "../models/patient";
+import { Observable} from "rxjs";
 import {User} from "../models/user";
+import {Deserialize, IJsonObject} from "dcerialize";
+import {map} from "rxjs/operators";
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class DocService {
    * Api path
    */
   path = 'doctor';
-    /**
+
+  /**
    *
    * @param apiService
    * @param http
@@ -24,6 +26,8 @@ export class DocService {
   }
 
   getPatients(id?: string): Observable<User[]> {
-    return this.http.get<User[]>(id ? `${this.path}/${id}/patients` : this.path);
+    return this.http.get<IJsonObject[]>(id ? `${this.path}/${id}/patients` : this.path).pipe(
+      map((data) => data.map((user) => Deserialize(user, () => User)))
+    );
   }
 }

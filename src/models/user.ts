@@ -24,7 +24,7 @@ export class ActivateUser {
 
 export enum UserStatus {
     disabled = 'disabled',
-    pending = 'pending',
+    pending_activate = 'pending_activate',
     active = 'active',
 }
 
