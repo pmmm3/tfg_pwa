@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   openConsentDialog() {
     this.dialog.open(ModalConsentimientoComponent, {
       maxHeight: '90vh',
-      maxWidth: '90vw',
+      maxWidth: '75vw',
       disableClose: true,
     });
   }
