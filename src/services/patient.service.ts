@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {HttpClient} from '@angular/common/http';
-import {EMPTY, filter, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {Patient} from "../models/patient";
-import {Deserialize, IJsonArray, IJsonObject} from "dcerialize";
+import {Deserialize, IJsonObject} from "dcerialize";
 import {map} from "rxjs/operators";
 import {Questionnaire} from "../models/questionnaire";
 
@@ -30,6 +30,10 @@ export class PatientService {
     return this.http.get<IJsonObject>(id ? `${this.path}/${id}` : this.path).pipe(
       map((data: IJsonObject) => Deserialize(data, () => Patient))
     );
+  }
+
+  isConsentAccepted(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.path}/is-consent-accepted`);
   }
 
   acceptConsent(id: string, data: any): Observable<Patient> {
