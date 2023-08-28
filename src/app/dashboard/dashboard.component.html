@@ -15,6 +15,8 @@
     <button mat-button fxLayout="row" [ngClass]="{'selected-button': selectedButtonIndex === 'Cuestionarios'}"
             (click)="selectButton('Cuestionarios')">
       <mat-icon>assignment</mat-icon>
+
+
       <span fxHide.lt-sm>Cuestionarios</span>
     </button>
     <button mat-button fxLayout="row" [ngClass]="{'selected-button': selectedButtonIndex === 'Modulos'}"
@@ -53,10 +55,11 @@
 
     </div>
     <div *ngIf="selectedButtonIndex === 'Cuestionarios'">
-      Mostrar todos los cuestionarios creados ordenados por fecha, si se selecciona uno muestra los modulos que contiene
+      <app-questionnaire-list></app-questionnaire-list>
+
     </div>
     <div *ngIf="selectedButtonIndex === 'Modulos'">
-      Muesta todos los modulos creados ordenados por fecha, si se selecciona uno muestra las preguntas que contiene
+      <app-module-list></app-module-list>
     </div>
 
 

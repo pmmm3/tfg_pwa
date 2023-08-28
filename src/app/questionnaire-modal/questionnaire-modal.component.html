@@ -1,0 +1,22 @@
+<mat-card class="mat-elevation-z8">
+  <form
+    [formGroup]="formQuestionnaire"
+    fxLayout="column"
+    fxLayoutGap="20"
+    class="datos-form"
+  >
+    <mat-form-field>
+      <mat-label>Titulo del cuestionario</mat-label>
+      <input matInput formControlName="title"/>
+    </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="submitQuestionnaire()">
+    Enviar
+  </button>
+
+
+</mat-card>

@@ -52,7 +52,12 @@ import { TableUsersComponent } from './table-users/table-users.component';
 import { InviteUserComponent } from './invite-user/invite-user.component';
 import { ChipUserStatusComponent } from './chip-user-status/chip-user-status.component';
 import { TableRequestUsersComponent } from './table-request-users/table-request-users.component';
-
+import { ModuleCardComponent } from './module-card/module-card.component';
+import { ModuleListComponent } from './module-list/module-list.component';
+import { QuestionnaireListComponent } from './questionnaire-list/questionnaire-list.component';
+import {QuestionnaireHeaderPipe} from "./questionnaire-list/questionnarie-header.pipe";
+import { QuestionnaireModalComponent } from './questionnaire-modal/questionnaire-modal.component';
+import { AssignmentModalComponent } from './assignment-modal/assignment-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +78,12 @@ import { TableRequestUsersComponent } from './table-request-users/table-request-
     InviteUserComponent,
     ChipUserStatusComponent,
     TableRequestUsersComponent,
+    ModuleCardComponent,
+    ModuleListComponent,
+    QuestionnaireListComponent,
+    QuestionnaireHeaderPipe,
+    QuestionnaireModalComponent,
+    AssignmentModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,73 @@
+<h3>Lista de cuestionarios</h3>
+<br>
+<div class="filter_chip" [class.active]="filtered" (click)="filterByMine()">
+  <mat-icon>account_circle</mat-icon>
+  <span> Mis Cuestionarios</span>
+</div>
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column | questionnaireHeader}} </th>
+    <td mat-cell
+        *matCellDef="let element"> {{column === 'createdAt' ? (element[column] | date:'dd/MM/YYYY') : element[column]}} </td>
+  </ng-container>
+  <ng-container matColumnDef="createdBy">
+    <th fxHide.lt-md mat-header-cell *matHeaderCellDef>{{'createdBy' | questionnaireHeader}}</th>
+    <td fxHide.lt-md mat-cell *matCellDef="let element">
+      {{ element.createdBy}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th fxHide.lt-sm mat-header-cell *matHeaderCellDef>&nbsp;</th>
+    <td fxHide.lt-sm mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="assignQuestionnaire(element)">
+        <mat-icon>assignment_add</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row"
+              (click)="(expandedElement = expandedElement === element ? null : element); getModules(element);$event.stopPropagation()">
+        <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
+        <div>
+          <button fxHide.gt-xs mat-raised-button color="primary" (click)="assignQuestionnaire(element)">
+            <mat-icon>assignment_add</mat-icon>
+            <span>Asignar a usuario</span>
+          </button>
+          <br>
+          <p *ngIf="element.description">{{ element.description }}</p>
+          <!--          Autor en dispositivos movil-->
+          <div fxHide.gt-sm>
+            <p *ngIf="element.createdBy"><b>{{'createdBy' | questionnaireHeader}}:</b> {{ element.createdBy}}</p>
+          </div>
+          <h4 *ngIf="moduleExpandedElement && moduleExpandedElement!.length>0">Lista de modulos:</h4>
+          <ul>
+            <li *ngFor="let module of moduleExpandedElement">
+              <app-module-card [module]="module"></app-module-card>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>

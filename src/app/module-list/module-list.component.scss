@@ -1,0 +1,18 @@
+
+
+table{
+  width: 100%;
+}
+
+mat-footer-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .3em;
+}
+.example-container {
+  height: 400px;
+  width: 550px;
+  max-width: 100%;
+  overflow: auto;
+}

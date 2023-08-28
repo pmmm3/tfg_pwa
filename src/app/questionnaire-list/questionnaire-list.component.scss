@@ -1,0 +1,53 @@
+table {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+.mat-column-expand{
+  padding: 0;
+}
+.filter_chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3em;
+  gap: 0.2em;
+  background-color: #e0e0e0;
+  border-radius: 1em;
+  cursor: pointer;
+  margin-bottom: 1em;
+
+  &.active, &:active {
+    background-color: #87ca9e;
+    & mat-icon,
+    & span {
+      color: #000; /* Cambia el color del icono y el texto en el estado activo */
+    }
+  }
+
+  & mat-icon,
+  & span {
+    transition: color 0.3s ease; /* Agrega transición suave para el cambio de color */
+  }
+}
+
+
