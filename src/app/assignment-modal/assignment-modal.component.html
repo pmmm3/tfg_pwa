@@ -1,0 +1,31 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>Asignar cuestionario</mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="formQuestionnaire">
+    <mat-form-field class="email_field" >
+    <mat-label>Email usuario:</mat-label>
+    <input matInput [formControlName]="'patientEmail'">
+    <mat-error *ngIf="formQuestionnaire.controls['patientEmail'].hasError('required')">
+      El email es requerido
+    </mat-error>
+    <mat-error *ngIf="formQuestionnaire.controls['patientEmail'].hasError('email')">
+      El email no es valido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="email_field" >
+    <mat-label>Email doctor:</mat-label>
+    <input matInput [formControlName]="'doctorEmail'">
+    <mat-error *ngIf="formQuestionnaire.controls['doctorEmail'].hasError('required')">
+      El email es requerido
+    </mat-error>
+    <mat-error *ngIf="formQuestionnaire.controls['doctorEmail'].hasError('email')">
+      El email no es valido
+    </mat-error>
+  </mat-form-field>
+  </form>
+
+  <button mat-raised-button color="primary" (click)="assignQuestionnaire()">Asignar</button>
+
+</mat-card>

@@ -45,7 +45,6 @@ export class UserService {
   isDoctor(): Observable<boolean> {
     return this.http.get<boolean>(this.path + '/is-doctor').pipe(
       catchError((error) => {
-        console.error('Error in isDoctor:', error);
         return of(false);  // En caso de error, devuelve false
       })
     );
@@ -54,7 +53,6 @@ export class UserService {
   isAdministrator(): Observable<boolean> {
     return this.http.get<boolean>(this.path + '/is-admin').pipe(
       catchError((error) => {
-        console.error('Error in isAdministrator:', error);
         return of(false);  // En caso de error, devuelve false
       })
     );
@@ -111,5 +109,14 @@ export class UserService {
         return EMPTY;
       }));
   }
+
+  inviteUser(email: string) {
+    return this.http.post(this.path + '/send-activate-account', {email: email})
+  }
+
+  unlockAdminorDoctor(email: string, rol : string) {
+    return this.http.post(this.path + `/register?role=${rol}`, {email: email})
+  }
+
 }
 

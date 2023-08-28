@@ -1,0 +1,10 @@
+<div class="custom_status_chip--active" *ngIf="status===UserStatus.active">
+  Activo
+</div>
+<div class="custom_status_chip--activated" *ngIf="status===UserStatus.pending_activate">
+  Sin activar
+</div>
+
+<div class="custom_status_chip--disabled" *ngIf="status===UserStatus.disabled">
+  Desactivado
+</div>

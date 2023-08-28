@@ -17,6 +17,7 @@ export class NavBarComponent {
   }
   logOut() {
     removeStorageObject('access_token');
+    removeStorageObject('email');
     this.isLoggedIn = false;
   }
 }

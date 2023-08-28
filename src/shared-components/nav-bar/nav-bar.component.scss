@@ -20,6 +20,12 @@ mat-toolbar span {
 /* Adjust the font size for smaller screens */
 @media screen and (max-width: 767px) {
   mat-toolbar span {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+}
+/* Adjust the font size for smaller screens */
+@media screen and (max-width: 350px) {
+  mat-toolbar span {
+    font-size: 1.5rem;
   }
 }

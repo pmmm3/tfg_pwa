@@ -1,0 +1,10 @@
+<h3>Invitar usuario</h3>
+<br>
+<div fxLayout="row" fxLayoutAlign="start baseline" fxLayoutGap="1em">
+
+  <mat-form-field>
+    <mat-label>Correo</mat-label>
+    <input matInput type="email" [(ngModel)]="email" placeholder="Ex. xxx@domain.com">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="inviteUser(email)">Enviar</button>
+</div>

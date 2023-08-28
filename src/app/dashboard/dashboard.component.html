@@ -1,51 +1,74 @@
-<div class="mat-elevation-z8 table__user">
-  <h3>Lista de usuarios</h3>
-  <mat-form-field>
-    <mat-label>Buscador</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. xxx@domain.com" #input>
-  </mat-form-field>
-  <table mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Correo</th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef fxShow
-          fxHide.lt-sm>Nombre</th>
-      <td mat-cell *matCellDef="let element" fxShow
-          fxHide.lt-sm> {{element.name}} </td>
-    </ng-container>
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef fxShow
-          fxHide.lt-sm>Apellidos</th>
-      <td mat-cell *matCellDef="let element" fxShow
-          fxHide.lt-sm> {{element.lastName}} </td>
-    </ng-container>
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Estado</th>
-      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-    </ng-container>
-    <ng-container matColumnDef="rol">
-      <th mat-header-cell *matHeaderCellDef>Roles</th>
-      <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="warn" (click)="deleteUser(element)">
-            <mat-icon>delete_outline</mat-icon>
-          </button>
-      </td>
-    </ng-container>
+<app-nav-bar></app-nav-bar>
+<main fxLayout="row" fxLayout.lt-sm="column">
+  <aside fxLayout="column" fxLayoutAlign="none start" fxLayoutGap="20" fxLayoutGap.lt-sm="5"
+         fxLayoutAlign.lt-sm="space-around none" fxLayout.lt-sm="row" fxFlex.gt-sm="15">
+    <button mat-button fxLayout="row" [ngClass]="{'selected-button': selectedButtonIndex === 'Inicio'}"
+            (click)="selectButton('Inicio')">
+      <mat-icon>home</mat-icon>
+      <span fxHide.lt-sm>Inicio</span>
+    </button>
+    <button mat-button fxLayout="row" [ngClass]="{'selected-button': selectedButtonIndex === 'Usuarios'}"
+            (click)="selectButton('Usuarios')">
+      <mat-icon>people</mat-icon>
+      <span fxHide.lt-sm>Usuarios</span>
+    </button>
+    <button mat-button fxLayout="row" [ngClass]="{'selected-button': selectedButtonIndex === 'Cuestionarios'}"
+            (click)="selectButton('Cuestionarios')">
+      <mat-icon>assignment</mat-icon>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-  </table>
-  <mat-paginator
-    [pageSizeOptions]="pageSizeOptions"
-    (page)="getUsers()"
-    showFirstLastButtons
-    aria-label="Select page of users">
-  </mat-paginator>
-</div>
+      <span fxHide.lt-sm>Cuestionarios</span>
+    </button>
+    <button mat-button fxLayout="row" [ngClass]="{'selected-button': selectedButtonIndex === 'Modulos'}"
+            (click)="selectButton('Modulos')">
+      <mat-icon>extension</mat-icon>
+      <span fxHide.lt-sm>Modulos</span>
+    </button>
+    <button fxHide.lt-sm mat-button fxLayout="row" color="warn" fxFlexAlign="center" class="logout" (click)="logOut()"
+            routerLink="/">
+      <mat-icon>exit_to_app</mat-icon>
+      <span fxHide.lt-sm>Cerrar sesión</span>
+    </button>
+  </aside>
+
+  <mat-divider fxHide.lt-sm [vertical]="true"></mat-divider>
+  <mat-divider fxShow.lt-sm></mat-divider>
+  <section fxFlex class="body">
+    <div *ngIf="selectedButtonIndex === 'Usuarios'">
+      <app-invite-user></app-invite-user>
+      <section *ngIf="rol==='Administrador'">
+        <h3>Lista de peticiones</h3>
+
+        <p>Aceptar o rechazar solicitudes de nuevos doctores/admins</p>
+        <app-table-request-users></app-table-request-users>
+      </section>
+      <br>
+      <h3 *ngIf="rol==='Doctor'" [matTooltip]="'Listado de pacientes que se han tratado'">Mis pacientes</h3>
+      <h3 *ngIf="rol==='Administrador'">Lista de usuarios</h3>
+      <br>
+      <app-table-users [rol]="rol"></app-table-users>
+      <br>
+      <h3 *ngIf="rol==='Doctor'">Buscar usuario</h3>
+
+      <mat-divider></mat-divider>
+
+
+    </div>
+    <div *ngIf="selectedButtonIndex === 'Cuestionarios'">
+      <app-questionnaire-list></app-questionnaire-list>
+
+    </div>
+    <div *ngIf="selectedButtonIndex === 'Modulos'">
+      <app-module-list></app-module-list>
+    </div>
+
+
+  </section>
+  <mat-divider fxHide.lt-md [vertical]="true"></mat-divider>
+
+  <div fxHide.lt-md class="calendar" fxFlex="15em">
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar></mat-calendar>
+    </mat-card>
+  </div>
+</main>
