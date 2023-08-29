@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {ModalConsentimientoComponent} from "../modal-consentimiento/modal-consentimiento.component";
+import {
+  ModalConsentimientoComponent
+} from "../modal-consentimiento/modal-consentimiento.component";
+import {QuestionnaireService} from "../../services/questionnaire.service";
+import {PatientService} from "../../services/patient.service";
+import {getStorageObject} from "../../utils/storage-manager";
+import {Questionnaire} from "../../models/questionnaire";
 
 @Component({
   selector: 'app-home',
@@ -8,7 +14,10 @@ import {ModalConsentimientoComponent} from "../modal-consentimiento/modal-consen
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public dialog: MatDialog) {
+  questionnaires: Questionnaire[] = [];
+
+  constructor(public dialog: MatDialog, private patientService: PatientService) {
+    this.getQuestionnaires();
   }
 
   openConsentDialog() {
@@ -16,6 +25,12 @@ export class HomeComponent implements OnInit {
       maxHeight: '90vh',
       maxWidth: '75vw',
       disableClose: true,
+    });
+  }
+
+  getQuestionnaires() {
+    this.patientService.getAssignments(getStorageObject('email')).subscribe((data) => {
+      this.questionnaires = data;
     });
   }
 

@@ -18,7 +18,9 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {environment} from '../environments/environment';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HomeComponent} from './home/home.component';
-import {NotFoundComponent} from '../shared-components/not-found/not-found.component';
+import {
+  NotFoundComponent
+} from '../shared-components/not-found/not-found.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {AuthGuard} from '../shared-components/ng-login/auth/auth-guard.service';
@@ -30,34 +32,59 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MAT_DATE_LOCALE, MatRippleModule} from '@angular/material/core';
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {ActivateAccountComponent} from './activate-account/activate-account.component';
+import {
+  ActivateAccountComponent
+} from './activate-account/activate-account.component';
 import {InfoDialogComponent} from './info-dialog/info-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {LandingPageComponent} from './landing-page/landing-page.component';
 import {RouterLink} from "@angular/router";
-import {LoginSpecificComponent} from './login/login-specific/login-specific.component';
+import {
+  LoginSpecificComponent
+} from './login/login-specific/login-specific.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import {ForgotPasswordComponent} from '../shared-components/forgot-password/forgot-password.component';
-import {ConsentimientoComponent} from './modal-consentimiento/consentimiento-texto/consentimiento.component';
-import {ModalConsentimientoComponent} from './modal-consentimiento/modal-consentimiento.component';
+import {
+  ForgotPasswordComponent
+} from '../shared-components/forgot-password/forgot-password.component';
+import {
+  ConsentimientoComponent
+} from './modal-consentimiento/consentimiento-texto/consentimiento.component';
+import {
+  ModalConsentimientoComponent
+} from './modal-consentimiento/modal-consentimiento.component';
 import {MatStepperModule} from "@angular/material/stepper";
-import {QuestionnaireComponent} from './questionnaire/questionnaire.component';
+import {
+  QuestionnaireCardComponent
+} from './questionnaire/questionnaire.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from '@angular/material/core';
-import { TableUsersComponent } from './table-users/table-users.component';
-import { InviteUserComponent } from './invite-user/invite-user.component';
-import { ChipUserStatusComponent } from './chip-user-status/chip-user-status.component';
-import { TableRequestUsersComponent } from './table-request-users/table-request-users.component';
-import { ModuleCardComponent } from './module-card/module-card.component';
-import { ModuleListComponent } from './module-list/module-list.component';
-import { QuestionnaireListComponent } from './questionnaire-list/questionnaire-list.component';
-import {QuestionnaireHeaderPipe} from "./questionnaire-list/questionnarie-header.pipe";
-import { QuestionnaireModalComponent } from './questionnaire-modal/questionnaire-modal.component';
-import { AssignmentModalComponent } from './assignment-modal/assignment-modal.component';
+import {TableUsersComponent} from './table-users/table-users.component';
+import {InviteUserComponent} from './invite-user/invite-user.component';
+import {
+  ChipUserStatusComponent
+} from './chip-user-status/chip-user-status.component';
+import {
+  TableRequestUsersComponent
+} from './table-request-users/table-request-users.component';
+import {ModuleCardComponent} from './module-card/module-card.component';
+import {ModuleListComponent} from './module-list/module-list.component';
+import {
+  QuestionnaireListComponent
+} from './questionnaire-list/questionnaire-list.component';
+import {
+  QuestionnaireHeaderPipe
+} from "./questionnaire-list/questionnarie-header.pipe";
+import {
+  QuestionnaireModalComponent
+} from './questionnaire-modal/questionnaire-modal.component';
+import {
+  AssignmentModalComponent
+} from './assignment-modal/assignment-modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +100,7 @@ import { AssignmentModalComponent } from './assignment-modal/assignment-modal.co
     ForgotPasswordComponent,
     ConsentimientoComponent,
     ModalConsentimientoComponent,
-    QuestionnaireComponent,
+    QuestionnaireCardComponent,
     TableUsersComponent,
     InviteUserComponent,
     ChipUserStatusComponent,

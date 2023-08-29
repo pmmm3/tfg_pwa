@@ -1,3 +1,16 @@
 <app-nav-bar></app-nav-bar>
-<div class="background-img">
+<div class="background-img" fxLayout="row" fxLayoutAlign="center start">
+  <mat-card class="mat-elevation-z8">
+
+    <h3>Mis cuestionarios asignados</h3>
+    <div class="scrolling-wrapper">
+      <div class="questionnaire" *ngFor="let questionnaire of questionnaires">
+        <app-questionnaire-card [questionnaire]="questionnaire"></app-questionnaire-card>
+      </div>
+    </div>
+
+
+
+  </mat-card>
+
 </div>
