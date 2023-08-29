@@ -1,1 +1,18 @@
-<p>view-full-assignment works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="second_header" fxLayout="row" fxLayoutAlign="start center">
+  <button mat-button class="back-button" [routerLink]="['/home']">
+    <mat-icon>chevron_left</mat-icon>
+    <span> Volver</span>
+  </button>
+</div>
+<mat-card class="modules_stepper mat-elevation-z8">
+  <mat-stepper>
+    <mat-step *ngFor="let module of modules">
+      <ng-template matStepContent >
+        <app-module-step [module]="module"></app-module-step>
+        <button mat-button matStepperNext>Next</button>
+      </ng-template>
+    </mat-step>
+  </mat-stepper>
+</mat-card>
+

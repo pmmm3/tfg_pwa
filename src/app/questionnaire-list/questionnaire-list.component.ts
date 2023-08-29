@@ -38,7 +38,7 @@ export class QuestionnaireListComponent {
   }
 
   getModules(questionnaire: Questionnaire) {
-    this.questionnaireService.getModules(questionnaire).subscribe((data) => {
+    this.questionnaireService.getModules(questionnaire.id!).subscribe((data) => {
       this.moduleExpandedElement = data;
     });
   }

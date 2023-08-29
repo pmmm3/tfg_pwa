@@ -58,5 +58,9 @@ export class PatientService {
   hasConsent(): Observable<boolean> {
     return this.http.get<boolean>(`${this.path}/consent`).pipe();
   }
+
+  hasAssignment(idAssignment: string | null) {
+    return this.http.get<boolean>(`${this.path}/has-assignment/${idAssignment}`);
+  }
 }
 

@@ -85,6 +85,8 @@ import {
   AssignmentModalComponent
 } from './assignment-modal/assignment-modal.component';
 import { ViewFullAssignmentComponent } from './view-full-assignment/view-full-assignment.component';
+import { ModuleStepComponent } from './module-step/module-step.component';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +115,8 @@ import { ViewFullAssignmentComponent } from './view-full-assignment/view-full-as
     QuestionnaireModalComponent,
     AssignmentModalComponent,
     ViewFullAssignmentComponent,
+    ModuleStepComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,

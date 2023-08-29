@@ -13,6 +13,7 @@ import {ForgotPasswordComponent} from "../shared-components/forgot-password/forg
 import {
   ViewFullAssignmentComponent
 } from "./view-full-assignment/view-full-assignment.component";
+import {haveAssignmentGuard} from "./have-assignment.guard";
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'assignment/:id',
-    canActivate: [AuthGuard],
+    canActivate: [haveAssignmentGuard],
     component: ViewFullAssignmentComponent,
 
   },

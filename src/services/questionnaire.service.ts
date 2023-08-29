@@ -38,8 +38,8 @@ export class QuestionnaireService {
     return this.http.get<Questionnaire>(this.path + `/${id}`).pipe(shareReplay());
   }
 
-  getModules(questionnaire: Questionnaire) {
-    return this.http.get<IJsonArray>(this.path + `/${questionnaire.id}/modules`).pipe(
+  getModules(questionnaireId: number): Observable<Module[]> {
+    return this.http.get<IJsonArray>(this.path + `/${questionnaireId}/modules`).pipe(
       map((data) => DeserializeArray(data, () => Module)
       ));
   }
