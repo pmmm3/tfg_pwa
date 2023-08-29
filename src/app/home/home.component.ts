@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {
-  ModalConsentimientoComponent
-} from "../modal-consentimiento/modal-consentimiento.component";
-import {PatientService} from "../../services/patient.service";
+import {ModalConsentimientoComponent} from "../modal-consentimiento/modal-consentimiento.component";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +8,7 @@ import {PatientService} from "../../services/patient.service";
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public dialog: MatDialog, private patientService: PatientService) {
+  constructor(public dialog: MatDialog) {
   }
 
   openConsentDialog() {
@@ -23,13 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.patientService.isConsentAccepted().subscribe(
-      (data) => {
-        if (!data) {
-          this.openConsentDialog();
-        }
-      }
-    )
+    this.openConsentDialog();
   }
 
 

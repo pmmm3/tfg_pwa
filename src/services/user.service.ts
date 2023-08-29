@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {HttpClient} from '@angular/common/http';
 import {ActivateUser, User, UserList} from '../models/user';
-import {EMPTY, forkJoin, Observable, of, shareReplay} from 'rxjs';
-import {Deserialize, IJsonObject, Serialize} from 'dcerialize';
+import {EMPTY, forkJoin, Observable, of} from 'rxjs';
+import {Deserialize, DeserializeJSON, IJsonObject, Serialize, SerializeArray} from 'dcerialize';
 import {catchError, map} from 'rxjs/operators';
 import {ListParams} from "../utils/table";
 
@@ -36,7 +36,6 @@ export class UserService {
 
   isPatient(): Observable<boolean> {
     return this.http.get<boolean>(this.path + '/is-patient').pipe(
-      shareReplay(),
       map((data) => data),
       catchError((error) => {
         throw error;
@@ -45,8 +44,7 @@ export class UserService {
 
   isDoctor(): Observable<boolean> {
     return this.http.get<boolean>(this.path + '/is-doctor').pipe(
-      shareReplay(),
-      catchError(() => {
+      catchError((error) => {
         return of(false);  // En caso de error, devuelve false
       })
     );
@@ -54,8 +52,7 @@ export class UserService {
 
   isAdministrator(): Observable<boolean> {
     return this.http.get<boolean>(this.path + '/is-admin').pipe(
-      shareReplay(),
-      catchError(() => {
+      catchError((error) => {
         return of(false);  // En caso de error, devuelve false
       })
     );
