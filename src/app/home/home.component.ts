@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Revert to this.openConsentDialog() to show the consent dialog if the user has not accepted the terms
     this.openConsentDialog();
   }
 
