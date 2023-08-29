@@ -1,5 +1,18 @@
 <h5>{{module?.title}}</h5>
-<app-question></app-question>
+<div class="questions_container">
+  <app-question *ngFor="let question of displayedQuestions" [question]="question"></app-question>
+</div>
+<mat-paginator #paginator
+               class="questions_paginator"
+               [length]="questions.length"
+               [pageSize]="pageSize"
+               [showFirstLastButtons]="false"
+               [pageSizeOptions]="[]"
+               [hidePageSize]="true"
+               [pageIndex]="pageIndex">
+
+</mat-paginator>
+
 
 
 

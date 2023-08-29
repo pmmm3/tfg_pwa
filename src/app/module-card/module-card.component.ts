@@ -12,7 +12,7 @@ export class ModuleCardComponent {
 
   constructor(private moduleService: ModuleService) {
     if (this.module) {
-      this.moduleService.getModuleWithQuestions(this.module.id).subscribe((module) => {
+      this.moduleService.getModule(this.module.id).subscribe((module) => {
         this.module = module;
       });
 
