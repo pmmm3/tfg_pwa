@@ -8,14 +8,12 @@ export class Questionnaire {
   @autoserializeAs(() => Date, 'created_at') createdAt?: Date;
   @autoserializeAs(() => String) description?: string;
   @autoserializeAs(() => String, 'created_by') createdBy?: string;
-  status?: string; // No serializamos aquí porque está fuera del objeto
 
-  constructor(title?: string, createdAt?: Date, description?: string, createdBy?: string, status?: string) {
+  constructor(title?: string, createdAt?: Date, description?: string, createdBy?: string) {
     this.title = title;
     this.description = description;
     this.createdAt = createdAt;
     this.createdBy = createdBy;
-    this.status = status;
   }
 }
 

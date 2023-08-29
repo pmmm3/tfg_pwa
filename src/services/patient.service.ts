@@ -1,11 +1,17 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from "rxjs";
+import {Observable, shareReplay} from "rxjs";
 import {Patient} from "../models/patient";
-import {Deserialize, IJsonObject} from "dcerialize";
+import {
+  Deserialize,
+  DeserializeArray,
+  IJsonArray,
+  IJsonObject
+} from "dcerialize";
 import {map} from "rxjs/operators";
 import {Questionnaire} from "../models/questionnaire";
+import {Assignment} from "../models/assignment";
 
 
 @Injectable({
@@ -39,28 +45,18 @@ export class PatientService {
   }
 
 
-  getAssignments(id: string): Observable<Questionnaire[]> {
-    return this.http.get<IJsonObject[]>(`${this.path}/${id}/questionnaires`).pipe(
-      map(data => {
-        return data.map(item => {
-          const questionnaire = new Questionnaire();
-          if (item && 'questionnaire' in item) {
-            const questionnaireData = item['questionnaire'] as IJsonObject;
-            questionnaire.id = Number(questionnaireData['id']);
-            questionnaire.title = String(questionnaireData['title']);
-            questionnaire.description = String(questionnaireData['description']);
-            const createdAt = questionnaireData['created_at'];
-            if (typeof createdAt === 'string' || createdAt instanceof Date) {
-              questionnaire.createdAt = new Date(createdAt);
-            }
-            questionnaire.createdBy = String(questionnaireData['created_by']);
-          }
-          questionnaire.status = item['status'] as string || 'default';
-          return questionnaire;
-        });
-      })
+  getAssignments(id: string): Observable<Assignment[]> {
+    // If we have assigmments, we return them and get questionnaires from them
+    return this.http.get<IJsonArray>(`${this.path}/${id}/assignments`).pipe(
+      shareReplay(),
+      map((data: IJsonArray) => DeserializeArray(data, () => Assignment)
+      )
     );
+
   }
 
+  hasConsent(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.path}/consent`).pipe();
+  }
 }
 

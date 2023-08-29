@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ApiService} from "./api.service";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, shareReplay} from "rxjs";
 import {Questionnaire, QuestionnaireWithModule} from "../models/questionnaire";
 import {DeserializeArray, IJsonArray} from "dcerialize";
 import {map} from "rxjs/operators";
@@ -32,6 +32,10 @@ export class QuestionnaireService {
     return this.http.get<IJsonArray>(this.path).pipe(
       map((data) => DeserializeArray(data, () => Questionnaire)
       ));
+  }
+
+  getQuestionnaire(id: number): Observable<Questionnaire> {
+    return this.http.get<Questionnaire>(this.path + `/${id}`).pipe(shareReplay());
   }
 
   getModules(questionnaire: Questionnaire) {

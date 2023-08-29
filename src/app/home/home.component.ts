@@ -3,10 +3,10 @@ import {MatDialog} from "@angular/material/dialog";
 import {
   ModalConsentimientoComponent
 } from "../modal-consentimiento/modal-consentimiento.component";
-import {QuestionnaireService} from "../../services/questionnaire.service";
 import {PatientService} from "../../services/patient.service";
 import {getStorageObject} from "../../utils/storage-manager";
-import {Questionnaire} from "../../models/questionnaire";
+import {Assignment} from "../../models/assignment";
+import {QuestionnaireService} from "../../services/questionnaire.service";
 
 @Component({
   selector: 'app-home',
@@ -14,10 +14,10 @@ import {Questionnaire} from "../../models/questionnaire";
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  questionnaires: Questionnaire[] = [];
+  assignments: Assignment[] = [];
 
-  constructor(public dialog: MatDialog, private patientService: PatientService) {
-    this.getQuestionnaires();
+  constructor(public dialog: MatDialog, private patientService: PatientService, private questionnaireService: QuestionnaireService) {
+    this.getAssignments();
   }
 
   openConsentDialog() {
@@ -28,15 +28,21 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getQuestionnaires() {
+  getAssignments() {
     this.patientService.getAssignments(getStorageObject('email')).subscribe((data) => {
-      this.questionnaires = data;
+      this.assignments = data;
     });
   }
 
   ngOnInit(): void {
-    // Revert to this.openConsentDialog() to show the consent dialog if the user has not accepted the terms
-    this.openConsentDialog();
+    this.patientService.hasConsent().subscribe((data) => {
+      if (!data) {
+        this.openConsentDialog();
+      }
+    });
+  }
+  abrir(){
+    console.log("abrir")
   }
 
 

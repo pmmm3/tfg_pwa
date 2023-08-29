@@ -4,8 +4,9 @@
 
     <h3>Mis cuestionarios asignados</h3>
     <div class="scrolling-wrapper">
-      <div class="questionnaire" *ngFor="let questionnaire of questionnaires">
-        <app-questionnaire-card [questionnaire]="questionnaire"></app-questionnaire-card>
+      <div class="questionnaire" *ngFor="let assignment of assignments">
+        <app-questionnaire-card [questionnaireId]="assignment.idQuestionnaire" [status]="assignment.status" (click)="abrir()"
+        ></app-questionnaire-card>
       </div>
     </div>
 

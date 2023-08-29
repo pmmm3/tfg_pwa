@@ -5,7 +5,6 @@ import {QuestionnaireService} from "../../services/questionnaire.service";
 import {Module} from "../../models/module";
 import {getStorageObject} from "../../utils/storage-manager";
 import {MatDialog} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {
   AssignmentModalComponent
 } from "../assignment-modal/assignment-modal.component";
