@@ -41,7 +41,6 @@ export class QuestionnaireCardComponent implements OnInit {
             this.chip_color = "#000000";
             break;
           case 'draft':
-            console.log('draft')
             this.icon_color = 'white';
             this.background_color = '#0e7f94';
             this.text_color = '#FFFFFF';
