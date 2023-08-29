@@ -6,7 +6,6 @@ import {
 import {PatientService} from "../../services/patient.service";
 import {getStorageObject} from "../../utils/storage-manager";
 import {Assignment} from "../../models/assignment";
-import {QuestionnaireService} from "../../services/questionnaire.service";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +15,7 @@ import {QuestionnaireService} from "../../services/questionnaire.service";
 export class HomeComponent implements OnInit {
   assignments: Assignment[] = [];
 
-  constructor(public dialog: MatDialog, private patientService: PatientService, private questionnaireService: QuestionnaireService) {
+  constructor(public dialog: MatDialog, private patientService: PatientService) {
     this.getAssignments();
   }
 
@@ -40,9 +39,6 @@ export class HomeComponent implements OnInit {
         this.openConsentDialog();
       }
     });
-  }
-  abrir(){
-    console.log("abrir")
   }
 
 

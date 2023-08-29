@@ -84,6 +84,7 @@ import {
 import {
   AssignmentModalComponent
 } from './assignment-modal/assignment-modal.component';
+import { ViewFullAssignmentComponent } from './view-full-assignment/view-full-assignment.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import {
     QuestionnaireHeaderPipe,
     QuestionnaireModalComponent,
     AssignmentModalComponent,
+    ViewFullAssignmentComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,12 +10,21 @@ import {LoginSpecificComponent} from "./login/login-specific/login-specific.comp
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {adminOrDoctorGuard} from "./admin-or-doctor.guard";
 import {ForgotPasswordComponent} from "../shared-components/forgot-password/forgot-password.component";
+import {
+  ViewFullAssignmentComponent
+} from "./view-full-assignment/view-full-assignment.component";
 
 const routes: Routes = [
   {
     path: 'home',
     canActivate: [AuthGuard],
     component: HomeComponent,
+  },
+  {
+    path: 'assignment/:id',
+    canActivate: [AuthGuard],
+    component: ViewFullAssignmentComponent,
+
   },
   {
     path: 'dashboard',
