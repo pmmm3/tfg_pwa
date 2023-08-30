@@ -87,6 +87,8 @@ import {
 import { ViewFullAssignmentComponent } from './view-full-assignment/view-full-assignment.component';
 import { ModuleStepComponent } from './module-step/module-step.component';
 import { QuestionComponent } from './question/question.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -164,7 +166,9 @@ import { QuestionComponent } from './question/question.component';
     MatChipsModule,
     MatTooltipModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule,
+    MatButtonToggleModule
   ],
   providers: [AuthGuard,
     {provide: MAT_DATE_LOCALE, useValue: 'es-ES'}],
