@@ -1,12 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Question} from "../../models/question";
+import {Question, QuestionType} from "../../models/question";
 import {QuestionService} from "../../services/question.service";
 
-export enum QuestionType {
-  YesNo = 'YesNo',
-  Text = 'text',
-  Multiple = 'multiple',
-}
 
 @Component({
   selector: 'app-question',
@@ -16,7 +11,10 @@ export enum QuestionType {
 
 export class QuestionComponent implements OnInit {
   @Input() question?: Question;
+  options?: string[];
   type: QuestionType = QuestionType.Text;
+
+  answer?: string;
 
   constructor(private questionService: QuestionService) {
     // nothing
@@ -24,9 +22,10 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit() {
     if (this.question) {
-      this.questionService.getQuestionType(this.question.id, this.question.idModule).subscribe((type) => {
-        if (type) {
-          this.type = type;
+      this.questionService.getQuestionOptions(this.question.id, this.question.idModule).subscribe((questionOption) => {
+        if (questionOption) {
+          this.type = questionOption.type;
+          this.options = questionOption.options;
         }
       });
     }

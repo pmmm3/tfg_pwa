@@ -1,4 +1,4 @@
-import {autoserializeAs} from "dcerialize";
+import {autoserializeAs, autoserializeAsArray} from "dcerialize";
 
 export class Question {
   @autoserializeAs(() => Number) id: number;
@@ -15,4 +15,21 @@ export class Question {
     this.parentQuestionIdModule = parentQuestionIdModule;
   }
 
+}
+
+
+export enum QuestionType {
+  YesNo = 'YesNo',
+  Text = 'text',
+  Multiple = 'multiple',
+}
+
+export class QuestionOption {
+  @autoserializeAs(() => String, 'type_opt') type: QuestionType;
+  @autoserializeAsArray(() => String) options: string[];
+
+  constructor(type: QuestionType, options: string[]) {
+    this.type = type;
+    this.options = options;
+  }
 }
