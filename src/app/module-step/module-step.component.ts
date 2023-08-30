@@ -21,8 +21,8 @@ export class ModuleStepComponent implements AfterViewInit, OnInit {
 
   questions: Question[] = [];
   displayedQuestions: Question[] = [];
-
-  pageSize = 1;
+  // Page size for mobile devices is 1, for desktop devices are 3
+  pageSize = window.innerWidth < 600 ? 1 : 3;
   pageIndex = 0;
 
   constructor(private moduleService: ModuleService) {

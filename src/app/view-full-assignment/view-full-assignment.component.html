@@ -10,7 +10,13 @@
     <mat-step *ngFor="let module of modules">
       <ng-template matStepContent >
         <app-module-step [module]="module"></app-module-step>
-        <button mat-button matStepperNext>Next</button>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1em">
+
+          <button mat-button >Borrador</button>
+          <button mat-button >Enviar</button>
+          <span fxFlex></span>
+          <button mat-button matStepperNext fxFlexAlign="end">Siguiente</button>
+        </div>
       </ng-template>
     </mat-step>
   </mat-stepper>
