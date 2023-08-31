@@ -40,8 +40,8 @@ export class ViewFullAssignmentComponent implements OnInit {
 
   openCIBarona() {
     this.dialog.open(BaronaComponent, {
-      maxHeight: '90vh',
-      maxWidth: '75vw',
+      maxHeight: '100%',
+      maxWidth: '100%',
       disableClose: true,
     });
   }

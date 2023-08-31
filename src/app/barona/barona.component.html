@@ -1,1 +1,57 @@
-<p>barona works!</p>
+<form
+  novalidate
+  [formGroup]="baronaForm"
+  (ngSubmit)="send()"
+  fxLayout="column"
+  fxLayoutAlign="start start"
+>
+  <p>Introduzca su fecha de nacimiento:</p>
+  <mat-form-field>
+    <input matInput formControlName="age" [matDatepicker]="picker">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <p>Seleccione su género:</p>
+  <mat-form-field>
+    <mat-select formControlName="gender">
+      <mat-option *ngFor="let option of genderOptions" [value]="option.value">
+        {{ option.text }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>Indique el nivel académico más alto alcanzado:</p>
+  <mat-form-field>
+    <!-- Selector de educación -->
+    <mat-select formControlName="education">
+
+      <mat-option *ngFor="let option of educationOptions" [value]="option.value">
+        {{ option.text }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>Seleccione la región donde se crió:</p>
+  <mat-form-field>
+
+    <!-- Selector de región -->
+    <mat-select formControlName="region">
+
+      <mat-option *ngFor="let option of regionOptions" [value]="option.value">
+        {{ option.text }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>Seleccione el tipo de zona donde habita:</p>
+  <mat-form-field>
+    <!-- Selector de zona -->
+    <mat-select formControlName="zone" name="zone">
+
+      <mat-option *ngFor="let option of zoneOptions" [value]="option.value">
+        {{ option.text }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Enviar</button>
+</form>

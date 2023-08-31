@@ -65,5 +65,22 @@ export class PatientService {
   hasCiBarona(idPatient: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.path}/${idPatient}/has-ci-barona`);
   }
+
+  sendBarona(id_patient: string, data: {
+    age: any;
+    education: any;
+    zone: any;
+    region: any;
+    gender: any;
+  }) {
+    const input = {
+      "age": data.age,
+      "education_level": data.education,
+      "zone": data.zone,
+      "region": data.region,
+      "gender": data.gender
+    }
+    return this.http.post(`${this.path}/${id_patient}/barona`, input);
+  }
 }
 
