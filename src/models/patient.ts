@@ -8,20 +8,24 @@ export class Patient {
   @autoserializeAs(() => Boolean) consent?: boolean;
   @autoserializeAs(() => String) dni?: string;
   @autoserializeAs(() => Number, 'telephone_number') phone?: number;
-  @autoserializeAs(() => String) gender?: string;
+  @autoserializeAs(() => Number) gender?: number;
   @autoserializeAs(() => Date, 'birth_date') birthdate?: Date;
   @autoserializeAs(() => String, 'civil_status') civilStatus?: string;
   @autoserializeAs(() => String, 'employment_status') employmentStatus?: string;
-  @autoserializeAs(() => String) region?: string;
-  @autoserializeAs(() => String) zone?: string;
-  @autoserializeAs(() => String, 'education_level') educationLevel?: string;
+  @autoserializeAs(() => Number) region?: number;
+  @autoserializeAs(() => Number) zone?: number;
+  @autoserializeAs(() => Number, 'education_level') educationLevel?: number;
   @autoserializeAs(() => String) nationality?: string;
   @autoserializeAs(() => String, 'native_language') nativeLanguage?: string;
 
+  @autoserializeAs(() => Boolean, 'has_ci_barona') hasCiBarona?: boolean;
+  @autoserializeAs(() => Number, 'ci_barona') ciBarona?: number;
+
+
   constructor(email: string, name: string, lastName?: string, status?: string, consent?: boolean,
-              dni?: string, phone?: number, gender?: string, birthdate?: Date, civilStatus?: string,
-              employmentStatus?: string, region?: string, zone?: string, educationLevel?: string,
-              nationality?: string, nativeLanguage?: string) {
+    dni?: string, phone?: number, gender?: number, birthdate?: Date, civilStatus?: string,
+    employmentStatus?: string, region?: number, zone?: number, educationLevel?: number,
+    nationality?: string, nativeLanguage?: string, hasCiBarona?: boolean, ciBarona?: number) {
     this.email = email;
     this.name = name;
     this.lastName = lastName;
@@ -38,5 +42,7 @@ export class Patient {
     this.educationLevel = educationLevel;
     this.nationality = nationality;
     this.nativeLanguage = nativeLanguage;
+    this.hasCiBarona = hasCiBarona;
+    this.ciBarona = ciBarona;
   }
 }

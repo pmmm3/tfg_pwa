@@ -10,7 +10,6 @@ import {
   IJsonObject
 } from "dcerialize";
 import {map} from "rxjs/operators";
-import {Questionnaire} from "../models/questionnaire";
 import {Assignment} from "../models/assignment";
 
 
@@ -61,6 +60,10 @@ export class PatientService {
 
   hasAssignment(idAssignment: string | null) {
     return this.http.get<boolean>(`${this.path}/has-assignment/${idAssignment}`);
+  }
+
+  hasCiBarona(idPatient: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.path}/${idPatient}/has-ci-barona`);
   }
 }
 

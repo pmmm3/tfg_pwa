@@ -89,6 +89,7 @@ import { ModuleStepComponent } from './module-step/module-step.component';
 import { QuestionComponent } from './question/question.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { BaronaComponent } from './barona/barona.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     ViewFullAssignmentComponent,
     ModuleStepComponent,
     QuestionComponent,
+    BaronaComponent,
   ],
   imports: [
     BrowserModule,
