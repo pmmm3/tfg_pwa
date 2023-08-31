@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-card {
+  margin: 0 1em 1em;
+}
+
+.modules_stepper {
+  padding-left: 1em;
+  padding-right: 1em;
+}

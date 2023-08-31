@@ -36,6 +36,7 @@ h2 {
   padding: 0;
   @include dark-blue;
 }
+
 h3 {
   font-size: 1.5rem;
   font-weight: 600;
@@ -84,3 +85,19 @@ h3 {
   margin: 20px;
   gap: 2em;
 }
+
+
+.mat-horizontal-stepper-header-container {
+
+
+  overflow-x: auto;
+
+  .mat-step-label {
+    display: none;
+  }
+}
+
+.mat-stepper-horizontal-line {
+  display: none;
+}
+

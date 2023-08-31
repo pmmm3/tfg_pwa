@@ -1,0 +1,16 @@
+<p *ngIf="question && question.content">{{ question.content }}</p>
+<div *ngIf="options">
+  <mat-form-field *ngIf="type !== QuestionType.YesNo">
+    <input matInput *ngIf="type === QuestionType.Text" placeholder="Escribe aquí" [(ngModel)]="answer"
+           (blur)="onAnswerChange()">
+    <mat-select *ngIf="type === QuestionType.Multiple" [(ngModel)]="answer" (ngModelChange)="onAnswerChange()">
+      <mat-option *ngFor="let option of options" [value]="option.id">{{ option.content }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-button-toggle-group *ngIf="type === QuestionType.YesNo" [(ngModel)]="answer" (ngModelChange)="onAnswerChange()">
+    <mat-button-toggle *ngFor="let option of options" [value]="option.id">{{ option.content }}</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+

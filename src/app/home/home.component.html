@@ -1,3 +1,17 @@
 <app-nav-bar></app-nav-bar>
-<div class="background-img">
+<div class="background-img" fxLayout="row" fxLayoutAlign="center start">
+  <mat-card class="mat-elevation-z8">
+
+    <h3>Mis cuestionarios asignados</h3>
+    <div class="scrolling-wrapper">
+      <div class="questionnaire" *ngFor="let assignment of assignments">
+        <app-questionnaire-card [questionnaireId]="assignment.idQuestionnaire" [status]="assignment.status"
+                                [routerLink]="['/assignment', assignment.id]"
+        ></app-questionnaire-card>
+      </div>
+    </div>
+
+
+  </mat-card>
+
 </div>
