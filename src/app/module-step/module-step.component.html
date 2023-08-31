@@ -1,6 +1,7 @@
 <h5>{{module?.title}}</h5>
 <div class="questions_container">
-  <app-question *ngFor="let question of displayedQuestions" [question]="question"></app-question>
+  <app-question *ngFor="let question of displayedQuestions" [question]="question"
+                [assignment]="assignment"></app-question>
 </div>
 <mat-paginator #paginator
                class="questions_paginator"
@@ -9,9 +10,13 @@
                [showFirstLastButtons]="false"
                [pageSizeOptions]="[]"
                [hidePageSize]="true"
-               [pageIndex]="pageIndex">
+               [pageIndex]="pageIndex"
+               *ngIf="questions.length > 0"
+>
 
 </mat-paginator>
+
+<p *ngIf="!questions.length"> No se han encontrado preguntas </p>
 
 
 

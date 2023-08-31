@@ -9,6 +9,7 @@ import {Module} from "../../models/module";
 import {Question} from "../../models/question";
 import {ModuleService} from "../../services/module.service";
 import {MatPaginator} from "@angular/material/paginator";
+import {Assignment} from "../../models/assignment";
 
 @Component({
   selector: 'app-module-step',
@@ -18,6 +19,7 @@ import {MatPaginator} from "@angular/material/paginator";
 export class ModuleStepComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator?: MatPaginator;
   @Input() module?: Module;
+  @Input() assignment?: Assignment;
 
   questions: Question[] = [];
   displayedQuestions: Question[] = [];
