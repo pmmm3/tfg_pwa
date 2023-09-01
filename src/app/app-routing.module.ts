@@ -14,12 +14,21 @@ import {
   ViewFullAssignmentComponent
 } from "./view-full-assignment/view-full-assignment.component";
 import {haveAssignmentGuard} from "./have-assignment.guard";
+import {
+  ResumeAssignmentComponent
+} from "./resume-assignment/resume-assignment.component";
 
 const routes: Routes = [
   {
     path: 'home',
     canActivate: [AuthGuard],
     component: HomeComponent,
+  },
+  {
+    path: 'assignment/:id/review',
+    canActivate: [haveAssignmentGuard, adminOrDoctorGuard],
+    component: ResumeAssignmentComponent,
+
   },
   {
     path: 'assignment/:id',

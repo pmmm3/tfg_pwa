@@ -39,7 +39,9 @@
         <div class="element-detail"
              [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
           <app-questionnaire-card *ngFor="let assignment of assignments"
-            [questionnaireId]="assignment.idQuestionnaire" [status]="assignment.status">
+            [questionnaireId]="assignment.idQuestionnaire" [status]="assignment.status"
+                                  routerLink="/assignment/{{assignment.idQuestionnaire}}/review"
+          >
           </app-questionnaire-card>
         </div>
       </td>
