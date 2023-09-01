@@ -43,9 +43,8 @@ mat-card {
   @media screen and (min-width: 700px) {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1em;
-    max-width: 550px;
+    max-width: 60rem;
   }
 
   .scrolling-wrapper {
@@ -54,6 +53,10 @@ mat-card {
     overflow-x: auto;
     gap: .5em;
     width: 100%;
+
+    @media screen  and (min-width: 700px){
+      gap: 1em;
+    }
 
     .questionnaire {
       margin-bottom: .1em;

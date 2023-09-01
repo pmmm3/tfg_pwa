@@ -1,12 +1,14 @@
 .questionnaire {
   margin-top: 1em; // To show the chip
   width: fit-content;
-  padding: 1em;
+  height: 10rem;
+  padding: 1em 1.5em;
 
   &__chip {
     position: absolute;
     top: -1em;
     left: 7em;
+    z-index: 1;
 
   }
 
