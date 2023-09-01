@@ -20,6 +20,7 @@ export class ModuleStepComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator?: MatPaginator;
   @Input() module?: Module;
   @Input() assignment?: Assignment;
+  @Input() isLastModule?: boolean;
 
   questions: Question[] = [];
   displayedQuestions: Question[] = [];
@@ -50,5 +51,9 @@ export class ModuleStepComponent implements AfterViewInit, OnInit {
     const startIndex = this.pageIndex * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.displayedQuestions = this.questions.slice(startIndex, endIndex);
+  }
+
+  finishAssignment() {
+
   }
 }

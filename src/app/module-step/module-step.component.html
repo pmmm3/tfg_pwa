@@ -18,6 +18,7 @@
 
 <p *ngIf="!questions.length"> No se han encontrado preguntas </p>
 
-
+<button mat-stroked-button matStepperNext *ngIf="!isLastModule">Siguiente bloque</button>
+<button mat-raised-button color="primary" *ngIf="isLastModule" (click)="finishAssignment()">Finalizar</button>
 
 

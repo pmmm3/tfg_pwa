@@ -5,11 +5,11 @@
     <span> Volver</span>
   </button>
 </div>
-<mat-card class="modules_stepper mat-elevation-z8">
+<mat-card class="modules_stepper mat-elevation-z8" >
   <mat-stepper>
     <mat-step *ngFor="let module of modules">
       <ng-template matStepContent >
-        <app-module-step [module]="module" [assignment]="assignment"></app-module-step>
+        <app-module-step [module]="module" [assignment]="assignment" [isLastModule]="lastModule===module"></app-module-step>
       </ng-template>
     </mat-step>
   </mat-stepper>
