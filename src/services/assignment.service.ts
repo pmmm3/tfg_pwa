@@ -39,4 +39,8 @@ export class AssignmentService {
       map((data) => Deserialize(data, () => Assignment))
     );
   }
+
+  finishAssignment(id: number) {
+    return this.http.put(this.path + '/' + id + '/finish', {}).pipe();
+  }
 }

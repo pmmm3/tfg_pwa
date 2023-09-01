@@ -3,6 +3,7 @@
   <app-question *ngFor="let question of displayedQuestions" [question]="question"
                 [assignment]="assignment"></app-question>
 </div>
+<p *ngIf="!questions.length"> No se han encontrado preguntas </p>
 <mat-paginator #paginator
                class="questions_paginator"
                [length]="questions.length"
@@ -11,14 +12,15 @@
                [pageSizeOptions]="[]"
                [hidePageSize]="true"
                [pageIndex]="pageIndex"
-               *ngIf="questions.length > 0"
 >
 
 </mat-paginator>
 
-<p *ngIf="!questions.length"> No se han encontrado preguntas </p>
+
 
 <button mat-stroked-button matStepperNext *ngIf="!isLastModule">Siguiente bloque</button>
-<button mat-raised-button color="primary" *ngIf="isLastModule" (click)="finishAssignment()">Finalizar</button>
+<button mat-raised-button color="primary" *ngIf="isLastModule" (click)="finishAssignment()"
+        [disabled]="assignment?.status === 'finished'">Finalizar
+</button>
 
 

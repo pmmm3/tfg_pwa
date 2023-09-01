@@ -10,6 +10,9 @@ import {Question} from "../../models/question";
 import {ModuleService} from "../../services/module.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {Assignment} from "../../models/assignment";
+import {AssignmentService} from "../../services/assignment.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-module-step',
@@ -28,7 +31,7 @@ export class ModuleStepComponent implements AfterViewInit, OnInit {
   pageSize = window.innerWidth < 600 ? 1 : 3;
   pageIndex = 0;
 
-  constructor(private moduleService: ModuleService) {
+  constructor(private moduleService: ModuleService, private assignmentService: AssignmentService, private snackBar: MatSnackBar, private router: Router) {
   }
 
   ngOnInit() {
@@ -41,10 +44,11 @@ export class ModuleStepComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    this.paginator!.page.subscribe((event) => {
-      this.pageIndex = event.pageIndex;
+    this.paginator!.page.subscribe(() => {
+      this.pageIndex = this.paginator!.pageIndex;
       this.updateDisplayedQuestions();
     });
+
   }
 
   updateDisplayedQuestions(): void {
@@ -54,6 +58,12 @@ export class ModuleStepComponent implements AfterViewInit, OnInit {
   }
 
   finishAssignment() {
-
+    this.assignmentService.finishAssignment(this.assignment!.id!).subscribe(
+      (data) => {
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.snackBar.open(error.error.detail, 'Cerrar');
+      });
   }
 }
