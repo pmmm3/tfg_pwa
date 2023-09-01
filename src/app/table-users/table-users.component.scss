@@ -12,3 +12,15 @@ table {
     max-width: 5rem;
   }
 }
+.element-detail {
+  overflow: auto;
+  display: flex;
+  height: fit-content;
+  gap: 1em;
+}
+tr.detail-row {
+  height: 0;
+}
+.element-row td {
+  border-bottom-width: 0;
+}
