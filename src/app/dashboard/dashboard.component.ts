@@ -9,7 +9,7 @@ import {forkJoin} from "rxjs";
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  selectedButtonIndex: 'Inicio' | 'Usuarios' | 'Cuestionarios' | 'Modulos' = 'Inicio';
+  selectedButtonIndex: 'Inicio' | 'Usuarios' | 'Cuestionarios' | 'Modulos' = 'Usuarios';
 
   rol: 'Doctor' | 'Administrador' | undefined;
 
