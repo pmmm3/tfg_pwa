@@ -30,7 +30,7 @@
 
       </div>
       <div *ngIf="stat['observations'].length">
-        <p ><strong>Observaciones:</strong></p>
+        <p><strong>Observaciones:</strong></p>
         <ul>
           <li *ngFor="let obs of stat['observations']">{{obs}}</li>
         </ul>
@@ -41,3 +41,4 @@
   </mat-card-content>
 
 </mat-card>
+<button mat-raised-button color="primary" (click)="downloadPDF()">Descargar PDF</button>

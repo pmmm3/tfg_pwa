@@ -4,6 +4,9 @@ import {ActivatedRoute} from "@angular/router";
 import {Assignment} from "../../models/assignment";
 import {PatientService} from "../../services/patient.service";
 
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-resume-assignment',
@@ -25,9 +28,30 @@ export class ResumeAssignmentComponent {
 
         this.assignmentService.getAnalysis(assignment.id!).subscribe(resume => {
           this.resume = resume;
-          console.log(resume)
         });
       });
+    });
+  }
+
+  downloadPDF() {
+    const data = document.getElementById('pdf_content')!;
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(data, options).then((canvas) => {
+      const img = canvas.toDataURL('image/PNG');
+
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${this.assignment?.id}.pdf`);
     });
   }
 
