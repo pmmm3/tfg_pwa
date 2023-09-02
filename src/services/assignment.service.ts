@@ -33,7 +33,7 @@ export class AssignmentService {
     }).pipe();
   }
 
-  getAssignmentById(id: string): Observable<Assignment> {
+  getAssignmentById(id: number): Observable<Assignment> {
     return this.http.get<IJsonObject>(this.path + '/' + id).pipe(
       shareReplay(),
       map((data) => Deserialize(data, () => Assignment))
@@ -42,5 +42,9 @@ export class AssignmentService {
 
   finishAssignment(id: number) {
     return this.http.put(this.path + '/' + id + '/finish', {}).pipe();
+  }
+
+  getAnalysis(id: number) {
+    return this.http.get(this.path + '/' + id + '/analytics').pipe();
   }
 }

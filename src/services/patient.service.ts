@@ -37,6 +37,10 @@ export class PatientService {
     );
   }
 
+  getBarona(id: string): Observable<number> {
+    return this.http.get<number>(`${this.path}/${id}/ci-barona`).pipe();
+  }
+
   acceptConsent(id: string, data: any): Observable<Patient> {
     return this.http.post<IJsonObject>(`${this.path}/${id}/accept-consent`, data).pipe(
       map((data: IJsonObject) => Deserialize(data, () => Patient))

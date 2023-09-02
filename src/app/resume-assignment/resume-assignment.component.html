@@ -1,1 +1,43 @@
-<p>resume-assignment works!</p>
+<app-nav-bar></app-nav-bar>
+<mat-card id="pdf_content" class="mat-elevation-z8">
+  <mat-card-header fxLayout="column" fxLayoutGap="1em">
+    <mat-card-title>Resultados</mat-card-title>
+    <div>
+
+      <h3>Información básica del cuestionario:</h3>
+      <mat-divider></mat-divider>
+
+      <p><strong>Doctor:</strong> {{assignment?.idDoctor}}</p>
+      <p><strong>Paciente:</strong> {{assignment?.idPatient}}</p>
+      <p><strong>Fecha:</strong> {{assignment?.date | date:'dd/MM/yyyy' }}</p>
+      <p><strong>CI-Barona:</strong> {{ciBarona}}</p>
+
+    </div>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <h3>Indicadores analizados:</h3>
+    <mat-divider></mat-divider>
+    <div *ngFor="let stat of resume">
+      <p><strong>Modulo:</strong> {{stat['module']}}</p>
+      <p><strong>Puntuación:</strong> {{stat['diagnostic']['punctuation']}}</p>
+      <div *ngIf="stat['diagnostic']['diagnostic'].length">
+        <p><strong>Posibles Diagnósticos:</strong></p>
+        <ul>
+          <li *ngFor="let diag of stat['diagnostic']['diagnostic']">{{diag}}</li>
+        </ul>
+
+      </div>
+      <div *ngIf="stat['observations'].length">
+        <p ><strong>Observaciones:</strong></p>
+        <ul>
+          <li *ngFor="let obs of stat['observations']">{{obs}}</li>
+        </ul>
+      </div>
+
+      <mat-divider></mat-divider>
+    </div>
+  </mat-card-content>
+
+</mat-card>
