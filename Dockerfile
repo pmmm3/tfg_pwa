@@ -19,7 +19,7 @@ RUN npm run build --prod
 
 # Use a lightweight Nginx image as a parent image
 FROM nginx:stable-alpine
-
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 # Copy the built Angular PWA from the builder stage to the Nginx web server
 COPY --from=builder /app/dist/tfg-front /usr/share/nginx/html
 
